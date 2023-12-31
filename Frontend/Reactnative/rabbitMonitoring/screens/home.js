@@ -1,14 +1,9 @@
-import { StyleSheet, Text, View, StatusBar, Image, useWindowDimensions, Dimensions} from 'react-native';
+import { StyleSheet, Text, View, StatusBar, Image} from 'react-native';
 import Mqtt from '../components/mqtt/mqttHome';
 import Exhaust from '../assets/exhaust.png'
 import Rabbit from '../assets/rabbit.png'
 
-
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
-
 export default function Home(){
-    
     return(
         <View style={styles.container}>
             <View style={styles.header}>
@@ -37,14 +32,12 @@ const styles=StyleSheet.create({
         flexDirection:"row",
         alignItems:"center",
         width:'100%',
-        height:130,
+        height:150,
         backgroundColor:"#29465B"
     },
     title:{
         marginTop:50,
-        marginLeft:10,
-        paddingLeft:windowWidth-550,
-        
+        marginLeft:10
     },
     containerLogo:{
         // borderWidth:1,
@@ -55,9 +48,6 @@ const styles=StyleSheet.create({
         backgroundColor:"#467598",
         padding:6,
         borderRadius:30,
-        position:'absolute',
-        top:10,
-        right: 30,
-        // marginLeft:45,
+        marginLeft:45,
     }
 })

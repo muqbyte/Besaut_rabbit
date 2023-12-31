@@ -12,7 +12,6 @@ export default function Mqtt(props){
 const imageLogo=props.imageLogo
 const mqttServer='wss://zr.txio.live:8888/mqtt';
 const mqttTopic= ['data/RB/01', 'data/RB/02', 'data/RB/03', 'data/RB/04','fan/RB/01','fan/RB/02','fan/RB/03','fan/RB/04'];
-// const topic = `rabbit/data/${id}`
 
 const [informationRba, setInformationRba]=useState({})
 const [informationRbb, setInformationRbb]=useState({})
