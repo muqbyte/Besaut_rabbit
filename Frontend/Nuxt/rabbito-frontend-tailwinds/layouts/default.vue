@@ -8,10 +8,13 @@
           </nuxt-link>
           <nuxt-link to="/" class="text-blue-500 hover:underline mr-4">Home</nuxt-link>
           <nuxt-link to="/weather" class="text-blue-500 hover:underline mr-4">Weather</nuxt-link>
-          <nuxt-link to="/data" class="text-blue-500 hover:underline mr-4">API Data</nuxt-link>
-          <nuxt-link to="/ranch" class="text-blue-500 hover:underline">Ranch Radar</nuxt-link>
+          <nuxt-link to="/control" class="text-blue-500 hover:underline mr-4">Radar</nuxt-link>
+          <nuxt-link to="/trends" class="text-blue-500 hover:underline">Reporting</nuxt-link>
         </nav>
-        <div class="text-blue-500 font-bold ml-auto">{{ pageTitle }}</div>
+        <div class="ml-auto">
+          <Formatime />
+        </div>
+        <!-- <div class="text-blue-500 font-bold ml-auto">{{ pageTitle }}</div> -->
         <!-- <NavigationModes/> -->
       </div>
     </header>
@@ -20,7 +23,7 @@
     </main>
     <footer class="fixed bottom-0 text-center w-full text-gray-700 p-2 text-xs z-10 bg-white py-2 border-t flex flex-col items-center">
       <div class="flex items-center">
-        <img src="/plexus_1.png" alt="Nex-Plex Logo" width="30" height="auto">
+        <img src="/plexus_1.png" alt="Nex-Plex Logo" width="25" height="auto">
         <div class="font-bold text-shadow-md">
           EA &copy; 2020 - {{ currentYear }}
         </div>
@@ -31,6 +34,7 @@
 
 <script setup lang="ts">
 import { useRoute } from 'vue-router';
+import Formatime from '~/utils/formatime.vue';
 
 const currentYear = ref(new Date().getFullYear());
 
@@ -39,12 +43,14 @@ const route = useRoute();
 // Define computed property for page title
 const pageTitle = computed(() => {
   switch (route.path) {
+    case '/':
+      return 'Ranch Radar: Enhancing Efficiency in Rabbit Barns with Advanced Monitoring';
     case '/weather':
-      return 'Weather';
-    case '/data':
-      return 'Data Dynamo: Streamlined API Insights at Your Fingertips';
-    case '/ranch':
-      return 'Ranch Radar: Elevating Rabbit Barn Efficiency with Monitoring';
+      return 'Weather Forecast: Plan Your Day with Up-to-Date Weather Information';
+    case '/trends':
+      return 'Data Dynamo: Uncover Actionable Insights with Streamlined Data Analysis';
+    case '/control':
+      return 'Ranch Control: Manage Your Operations Effectively';
     default:
       return ''; // Default title for other pages
   }

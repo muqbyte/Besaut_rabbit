@@ -1,6 +1,6 @@
   function formatColorStyle(value) {
     return {
-        color: value < 40 ? '#FBC02D' : value > 70 ? '#B388FF' : '#d9f99d',
+        color: value < 50 ? '#FBC02D' : value > 70 ? '#B388FF' : '#22c55e',
     };
   }
   export { formatColorStyle };

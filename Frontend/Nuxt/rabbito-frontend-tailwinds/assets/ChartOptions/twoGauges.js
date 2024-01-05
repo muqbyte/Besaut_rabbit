@@ -16,10 +16,10 @@ export const chartOption = (dew, temperature) => ({
           lineStyle: {
             color: [
               // [0.29, "rgb(15,164,100)"],
-              [0.29, "#ca8a04"],
+              [0.29, "#ffd000"],
               // [0.7, "rgb(235,137,52)"],
               [0.7, "#22c55e"],
-              [1, "#B388FF"],
+              [1, "#bb6df2"],
             ],
             shadowColor: "rgba(255, 255, 255, 0.7)",
             shadowBlur: 10,
@@ -59,7 +59,7 @@ export const chartOption = (dew, temperature) => ({
         type: "gauge",
         radius: "70%",
         min: 0,
-        max: 100,
+        max: 40,
         startAngle: 135,
         endAngle: 45,
         splitNumber: 2,
@@ -67,10 +67,10 @@ export const chartOption = (dew, temperature) => ({
           lineStyle: {
             color: [
               // [0.29, "rgb(15,164,100)"],
-              [0.29, "#7dd3fc"],
+              [0.29, "#6dcff2"],
               // [0.7, "rgb(235,137,52)"],
               [0.7, "#22c55e"],
-              [1, "rgb(219,58,55)"],
+              [1, "#ed0919"],
             ],
             shadowColor: "rgba(255, 255, 255, 0.7)",
             shadowBlur: 10,

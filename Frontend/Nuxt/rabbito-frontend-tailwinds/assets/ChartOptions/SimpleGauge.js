@@ -21,10 +21,10 @@ export const chartOption = (data, unit, max) => ({
         axisLine: {
           lineStyle: {
             color: [
-              [0.3, "#006064"],
-              [0.55, "#7dd3fc"],
-              [0.65, "#22c55e"],
-              [1.0, "rgb(219,58,55)"],
+              [0.1, "#22c55e"],
+              [0.55, "#ffd000"],
+              // [0.65, "#ff5e00"],
+              [1.0, "#ff2600"],
             ],
             width: 10,
           },
