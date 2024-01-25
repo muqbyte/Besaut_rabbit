@@ -1,7 +1,7 @@
 <template>
     <div>
         <div v-if="mqttDataLoaded">
-            <h3 class="subtitle-text mb-3">Thermal Data</h3>
+            <h3 class="subtitle-text mb-1">Thermal Level</h3>
             <v-row dense>
                 <v-col cols="3" v-for="(station, index) in stations" :key="index">
                     <h3 class="subtitle-text">{{ station.name }}</h3>

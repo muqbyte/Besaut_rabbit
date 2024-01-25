@@ -1,7 +1,7 @@
 <template>
-    <div class="mt-5">
+    <div class="mt-2">
       <div v-if="mqttDataLoaded">
-        <h3 class="subtitle-text mb-3">Ammonia Level</h3>
+        <h3 class="subtitle-text mb-1">Ammonia Level</h3>
         <v-row>
           <v-col cols="3" v-for="(station, index) in stations" :key="index">
             <h3 class="subtitle-text">{{ station.name }}</h3>
@@ -24,7 +24,7 @@
   import { ref, computed, onMounted } from 'vue';
 
   import { randomizeId } from '~/utils/randomIdGen';
-  const max = { TMP: 40, RH: 100, PPM: 500 };
+  const max = { TMP: 40, RH: 100, PPM: 100 };
   const unit = { TMP: '°C', RH: '%', PPM: 'ppm' };
   import { useAmmoniaMqttData } from '~/stores/ammoniaMqttData';
   const ammoniaDataStore = useAmmoniaMqttData(); 

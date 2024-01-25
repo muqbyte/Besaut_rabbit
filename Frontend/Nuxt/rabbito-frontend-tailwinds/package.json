@@ -27,6 +27,7 @@
     "vite-plugin-vuetify": "^1.0.2",
     "vue": "^3.3.4",
     "vue-echarts": "^6.6.1",
+    "vue3-easy-data-table": "^1.5.47",
     "vuetify": "^3.3.21"
   }
 }

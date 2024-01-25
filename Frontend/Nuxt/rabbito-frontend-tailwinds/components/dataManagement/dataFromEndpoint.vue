@@ -1,32 +1,38 @@
 <template>
   <div>
-    <h2 class="text-xl font-semibold mb-4">Data Display</h2>
+    <!-- <h2 class="text-xl font-semibold mb-4">Data Report for Selected Period</h2> -->
     <div class="overflow-x-auto">
-      <table class="table-auto w-full font-mono font-bold">
+      <table class="table-auto w-full font-mono font-bold rounded-lg">
         <thead>
-          <tr>
+          <tr class="bg-gray-200">
             <th v-for="(key, index) in dataKeys" :key="index" class="border px-4 py-2">{{ key }}</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(item, index) in data" :key="index" class="border-t">
+          <tr v-for="(item, index) in data" :key="index" class="border-t hover:bg-sky-950">
             <td v-for="(value, keyIndex) in dataKeys" :key="keyIndex" class="border px-4 py-2">{{ item[value] }}</td>
           </tr>
         </tbody>
       </table>
     </div>
-    <div class="mt-4">
+    <div class="mt-1">
       <div class="flex space-x-4">
-        <div class="flex-1">
-          <select v-model="selectedFormat" class="block w-full border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-indigo-500 focus:border-indigo-500">
-            <option v-for="(option, index) in formatOptions" :key="index" :value="option">{{ option }}</option>
-          </select>
-        </div>
-        <div>
-          <button @click="saveDataToFile" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-            Save
-          </button>
-        </div>
+        <!-- <div class="flex-1"> -->
+          <v-row dense align="center" class="inline-row">
+            <v-col cols="7">
+              <h3>Please select the file format to download and hit Save button</h3>
+            </v-col>
+            <v-col cols="3">
+              <select v-model="selectedFormat" class="color-data" aria-label="Sensor Selection" style="font-size: 18px;">
+                <option v-for="(option, index) in formatOptions" :key="index" :value="option">{{ option }}</option>
+              </select>
+            </v-col>
+            <v-col cols="2"> <!-- This will push the column to the right -->
+              <v-btn @click="saveDataToFile" class="btnStyle" color="transparent">
+                <h5 class="btn-font">Save</h5>
+              </v-btn>
+            </v-col>
+          </v-row>
       </div>
     </div>
   </div>
@@ -34,7 +40,7 @@
 
 
   
-  <script lang="ts">
+<script lang="ts">
 //   import { defineProps, ref, computed } from 'vue';
   export default {
     props: {
@@ -117,21 +123,42 @@
   };
   </script>
   
-  <style>
-  /* Custom colors */
+  <style scoped>
+  @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch&display=swap');
+  /* Custom colors 
   :root {
-    --primary-color: #2196F3; /* Replace with your primary color */
-    --secondary-color: #FF9800; /* Replace with your secondary color */
-    --accent-color: #4CAF50; /* Replace with your accent color */
+    --primary-color: #2196F3; 
+    --secondary-color: #FF9800; 
+    --accent-color: #4CAF50; 
   }
-  
+  */
+  .inline-row {
+    display: flex; /* Display columns inline */
+    flex-wrap: wrap; /* Wrap columns if necessary */
+    justify-content: space-between; /* Space between columns */
+    align-items: center; /* Center items vertically */
+  }
+  .color-data {
+    color: #FF9800;
+    text-shadow: 1px 0.5px rgb(21, 15, 15);
+    font-family: Chakra Petch, sans-serif;
+    font-size: 14px;
+    text-align: left;
+    font-weight: bold;
+    margin: 2px;
+  }
   /* Apply colors to relevant elements */
-  h2 {
-    color: var(--primary-color);
+  h3 {
+      font-family: Chakra Petch, sans-serif;
+      text-shadow: 1px 1px rgb(21, 15, 15);
+      color: #FF9800;
+      font-size: 20px;
+      font-weight: bold;
   }
   
   th {
-    color: var(--secondary-color);
+    color: #b8fc5d;
+    font-size: 16px;
   }
   
   /* Dark mode color scheme */
@@ -165,5 +192,14 @@
   select {
     margin-bottom: 10px;
   }
+  .btnStyle {
+    border: 1px solid #FF9800;
+
+    }
+  .btn-font {
+    font-family: Chakra Petch, sans-serif;
+    text-shadow: 1px 1px rgb(21, 15, 15);
+    color: #FF9800 !important;
+    }
   </style>
   

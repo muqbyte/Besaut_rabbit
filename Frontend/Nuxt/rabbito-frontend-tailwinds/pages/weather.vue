@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-dark" style="height:320px !important; opacity:0.8;">
+    <div class="bg-dark rounded-lg" style="height:650px !important; opacity:0.8;">
       <v-form align="center">
         <v-row align="center">
           <v-col cols="12" sm="6" md="4" lg="3">
@@ -69,7 +69,7 @@
         <div v-else class="pa-2">
           <v-card-text class="color-data">No weather data available</v-card-text>
         </div>
-        <RealtimeLastSeen/>
+        <!-- <RealtimeLastSeen/> -->
     </div>
   </template>
   
@@ -157,7 +157,7 @@
   
         loading.value = true;
         // Make a request to the server endpoint that fetches weather data
-        const response = await fetch(`http://localhost:5500/api/weather/${cityName.value}`);
+        const response = await fetch(`http://localhost:7500/api/weather/${cityName.value}`);
         weather.value = await response.json();
         loading.value = false;
         initializeDetails(); // Call the method to initialize details after weather data is available
