@@ -8,9 +8,6 @@ const imageLogo=props.imageLogo
     return(
         <View>
             <Indicator icon={imageLogo} />
-            <View style={{marginTop:50}}>
-                <Emergency/>
-            </View>
         </View>
     )
 }

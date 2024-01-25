@@ -1,5 +1,6 @@
 
 import * as React from 'react';
+
 import { StyleSheet,View, Text, Image } from 'react-native';
 // import { NavigationContainer } from '@react-navigation/native';
 // import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -8,16 +9,22 @@ import ParameterIndicator from './components/parameterIndicator/paramterIndicato
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from './screens/home';
 import HomeStack from './routes/homeStack';
+import { useFonts } from 'expo-font';
+import AppLoading from "expo-app-loading";
+
+
+
 
 // const Stack = createNativeStackNavigator();
 
 function App() {
+
   return (
     // <HomeStack/>
     
   <HomeStack/>
   // <View style={styles.container}>
-  //  <Home/>
+  //  <Text>HAI</Text>
   // </View>
   );
 }

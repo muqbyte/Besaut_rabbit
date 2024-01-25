@@ -1,63 +1,111 @@
-import { StyleSheet, Text, View, StatusBar, Image, useWindowDimensions, Dimensions} from 'react-native';
+import * as React from 'react';
+import { useCallback,useEffect } from 'react';
+import { StyleSheet, Text, View, StatusBar, Image, useWindowDimensions, Dimensions,TouchableOpacity} from 'react-native';
 import Mqtt from '../components/mqtt/mqttHome';
 import Exhaust from '../assets/exhaust.png'
 import Rabbit from '../assets/rabbit.png'
+import FanParameter from '../components/fanParameter/fanParameter';
+import { useFonts } from 'expo-font';
+// import AppLoading from "expo-app-loading";
+import HomeLayout from '../components/layout/homeLayout';
+import HomePage from '../components/homePage/homePage';
+import * as SplashScreen from 'expo-splash-screen';
+
+SplashScreen.preventAutoHideAsync();
 
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-export default function Home(){
-    
+
+export default function Home({ navigation }){
+    const [fontsLoaded] = useFonts({
+        'ChakraPetch-Bold':require('../assets/fonts/ChakraPetch-Bold.ttf'),
+        'ChakraPetch-Regular': require('../assets/fonts/ChakraPetch-Regular.ttf'),
+        'ChakraPetch-Light': require('../assets/fonts/ChakraPetch-Light.ttf'),
+        'ChakraPetch-SemiBold': require('../assets/fonts/ChakraPetch-SemiBold.ttf'),
+  });
+  useEffect(() => {
+    async function prepare() {
+      await SplashScreen.preventAutoHideAsync();
+    }
+    prepare();
+  }, []);
+
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
     return(
-        <View style={styles.container}>
-            <View style={styles.header}>
+        <HomeLayout>
+            <View style={styles.mainContainer}>
                 <View style={styles.title}>
-                    <Text style={{color:"#fff", fontSize:26, fontWeight:600, marginBottom:3}}>RABBIT IoT SYSTEM</Text>
-                    <Text style={{color:"#fff", fontSize:14, fontWeight:600}}>Monitoring and Control System</Text>
+                    <View>
+                        <Text style={{color:"#00BFFF", fontSize:24,fontFamily:"ChakraPetch-Bold"}}>RABBIT IoT SYSTEM</Text>
+                    </View>
+                    
+                    <View >
+                       <Image source={Rabbit} />
+                    </View>
                 </View>
-                <View style={styles.containerLogo}>
-                    <Image source={Rabbit}/>
+
+                <View style={{backgroundColor:"#29465B",width:"100%"}}>
+                    <Text style={{color:"#F6EEE6", fontSize:18,fontFamily:"ChakraPetch-Bold",textAlign:"center"}}>REAL TIME MONITORING DATA</Text>
                 </View>
+
+
+                <View style={{width:"100%"}}>
+                <HomePage/>
+                </View>
+
+                <View style={{backgroundColor:"#29465B",width:"100%"}}>
+                    <Text style={{color:"#F6EEE6", fontSize:18,fontFamily:"ChakraPetch-Bold",textAlign:"center"}}>EXHAUST FAN STATUS</Text>
+                </View>
+
+                <View style={{width:"100%",backgroundColor:"#082F49", padding:(windowHeight<800)?20:10}}>
+                         <FanParameter/>
+                </View> 
+                
             </View>
-            <Mqtt imageLogo={Exhaust} rabbitLogo={Rabbit}/>
-        </View>
+        </HomeLayout>
     )
 }
 
 const styles=StyleSheet.create({
-    container:{
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-    },
-    header:{
-        // marginTop:40,
-        // borderWidth:2,
-        flexDirection:"row",
+    
+    mainContainer:{
+        display:"flex",
+        flex:1,
+        flexDirection:"column",
+        alignContent:"center",
         alignItems:"center",
-        width:'100%',
-        height:130,
-        backgroundColor:"#29465B"
-    },
-    title:{
-        marginTop:50,
-        marginLeft:10,
-        paddingLeft:windowWidth-550,
+        marginTop:45,
+        marginBottom:95,
+        // marginHorizontal:20,
+        // borderWidth:2,
         
     },
-    containerLogo:{
-        // borderWidth:1,
-        marginTop:50,
+    title:{
+        
+        display:"flex",
         flexDirection:"row",
         justifyContent:"center",
         alignItems:"center",
-        backgroundColor:"#467598",
-        padding:6,
-        borderRadius:30,
-        position:'absolute',
-        top:10,
-        right: 30,
-        // marginLeft:45,
-    }
+        width:"100%",
+        gap:45,
+        // borderWidth:2,
+        borderTopLeftRadius:20,
+        borderTopRightRadius:20,
+        // borderColor:"#f59e0b",
+        backgroundColor:"#082F49",
+    },
+    
+  
+   
 })
