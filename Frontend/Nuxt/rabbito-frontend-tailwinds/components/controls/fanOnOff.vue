@@ -5,8 +5,8 @@
             <v-col>
                 <v-btn class="btnStyle" color="transparent">
                     <select v-model="selectedPayload" class="color-data" aria-label="Action Selection" style="font-size: 13px;">
-                      <option v-for="command in payloadOptions" :key="command.value" :value="command.value">
-                        <h5 class="btn-font">{{ command.label }}</h5>
+                      <option v-for="command in payloadOptions" :key="command.value" :value="command.value" class="btn-font">
+                        {{ command.label }}
                       </option>
                     </select>
                   </v-btn>
@@ -26,7 +26,8 @@
   
   <script setup>
   import { ref } from 'vue';
-  
+  import { useEndpoints } from '@/stores/endpoints'; // Adjust the path based on your project structure
+
   const props = defineProps(['fanName', 'fanCommand']);
   const selectedPayload = ref(`${props.fanCommand}_OFF` || '');
   const payloadOptions = [
@@ -34,10 +35,13 @@
     { value: `${props.fanCommand}_OFF`, label: 'Turn OFF' }
   ];
   const apiResponse = ref(null);
+  const getUrl = useEndpoints();
+   // Find the endpoint with id "EP-02"
+  const selectedEndpoint = getUrl.getEndpoints.find(endpoint => endpoint.id === 'EP-01');
   
   const submitPayload = async () => {
     try {
-      const apiUrl = 'http://localhost:7500/api/ranch/control/command';
+      const apiUrl = `${selectedEndpoint.apiUrl}`;
       const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {

@@ -46,7 +46,7 @@
   
   <style scoped>
   .chart {
-    height: 45vh;
+    height: 42vh;
   }
   </style>
   

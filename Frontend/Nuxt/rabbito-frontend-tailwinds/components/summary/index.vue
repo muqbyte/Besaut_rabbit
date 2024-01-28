@@ -3,7 +3,6 @@
         <div class="flex flex-wrap">
         <div
             class="w-8/12 md:w-2/3 columnBorder"
-            :class="{'w-full': !isMediumScreen}"
           >
             <RealtimeThermalTwoGauges/>
             <RealtimeAmmoniaSensor/>
@@ -11,9 +10,9 @@
           </div>
           <div
             class="w-4/12 md:w-1/3 columnBorder"
-            v-if="isMediumScreen"
           >
             <TrendsNonComplianceCount/>
+            <SummaryExhaustFanSmall />
             <SummarySignalStrength/>
           </div>
         </div>

@@ -6,9 +6,9 @@
           <nuxt-link to="https://www.eagleattech.com/" class="mr-4">
             <img src="/EAGLE.png" width="90" height="auto" />
           </nuxt-link>
-          <nuxt-link to="/" class="text-blue-500 hover:underline mr-4">Home</nuxt-link>
+          <nuxt-link to="/" class="text-blue-500 hover:underline mr-4">Radar</nuxt-link>
           <nuxt-link to="/weather" class="text-blue-500 hover:underline mr-4">Weather</nuxt-link>
-          <nuxt-link to="/control" class="text-blue-500 hover:underline mr-4">Radar</nuxt-link>
+          <nuxt-link to="/control" class="text-blue-500 hover:underline mr-4">Control</nuxt-link>
           <nuxt-link to="/trends" class="text-blue-500 hover:underline">Reporting</nuxt-link>
         </nav>
         <div class="ml-auto">

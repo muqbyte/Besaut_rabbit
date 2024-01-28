@@ -4,8 +4,8 @@
       <!-- <realtime-thermal-sensor/> -->
       <controls-main-command />
       <SummaryRecentThermal />
-      <ControlsFanStatus />
-      <!-- <SummaryExhaustFan /> -->
+      <!-- <ControlsFanStatus /> -->
+      <SummaryExhaustFan />
     </div>
   </template>
   

@@ -43,7 +43,8 @@
   
   <script setup>
   import { ref, onMounted, watch } from 'vue';
-  
+  import { useEndpoints } from '@/stores/endpoints'; // Adjust the path based on your project structure
+
   const loading = ref(false);
   const selectedSensor = ref('RB-01');
   const sensorOptions = [
@@ -55,6 +56,12 @@
   
   const displayOptions = ['Chart', 'Data Table'];
   const selectedDisplay = ref('Chart'); // Set the default display type
+  
+  const getUrl = useEndpoints();
+  
+  // Find the endpoint with id "EP-03"
+  const selectedEndpoint = getUrl.getEndpoints.find(endpoint => endpoint.id === 'EP-03');
+  
   
   const { data: dailyTrends, error, refresh } = useAsyncData(
     'dailyTrends',
@@ -69,7 +76,8 @@
         // Clear any previous error message
         error.value = null;
   
-        const apiUrl = `http://localhost:7500/api/ranch/analytics/today?id=${selectedSensor.value}`;
+        const apiUrl = `${selectedEndpoint.apiUrl}${selectedSensor.value}`;
+        // console.log(apiUrl)
         const response = await fetch(apiUrl, { method: 'GET' });
         const responseData = await response.json();
   

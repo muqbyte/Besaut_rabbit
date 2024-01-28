@@ -16,7 +16,13 @@
   </template>
   
   <script setup>
-  
+  import { useEndpoints } from '@/stores/endpoints'; // Adjust the path based on your project structure
+
+  const getUrl = useEndpoints();
+  // Find the endpoint with id "EP-02"
+  const selectedEndpoint = getUrl.getEndpoints.find(endpoint => endpoint.id === 'EP-09');
+
+
   const props = defineProps({
     cityName: String,
   });
@@ -25,7 +31,7 @@
   
   const fetchForecastData = async () => {
     try {
-      const response = await fetch(`http://localhost:5500/api/weather/forecast/${props.cityName}`);
+      const response = await fetch(`${selectedEndpoint.apiUrl}${props.cityName}`);
       weatherData.value = await response.json();
     } catch (error) {
       console.error('Error fetching weather forecast data:', error);
