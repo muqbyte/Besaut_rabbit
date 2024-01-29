@@ -5,13 +5,18 @@
   <script setup>
   import { ref, onMounted, watch } from 'vue';
   import { useComplianceData } from '~/stores/complianceData';
-  
+  import { useEndpoints } from '@/stores/endpoints'; // Adjust the path based on your project structure
+
+  const getUrl = useEndpoints();
+
+  // Find the endpoint with id "EP-06"
+  const selectedEndpoint = getUrl.getEndpoints.find(endpoint => endpoint.id === 'EP-06');
   const dailyTrends = ref([]);
   const nonComplianceChart = useComplianceData();
   
   const fetchData = async () => {
     try {
-      const apiUrl = `http://localhost:7500/api/ranch/lastseen/data`;
+      const apiUrl = `${selectedEndpoint.apiUrl}`;
       const response = await fetch(apiUrl, {
         method: 'GET',
       });

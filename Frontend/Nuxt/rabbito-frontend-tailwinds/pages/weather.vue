@@ -139,7 +139,13 @@
   </style>
   
   
-  <script setup>  
+  <script setup>
+  import { useEndpoints } from '@/stores/endpoints'; // Adjust the path based on your project structure
+
+  const getUrl = useEndpoints();
+  // Find the endpoint with id "EP-02"
+  const selectedEndpoint = getUrl.getEndpoints.find(endpoint => endpoint.id === 'EP-08');
+
   const weather = ref(null);
   const loading = ref(false);
   const error = ref(null);
@@ -157,7 +163,7 @@
   
         loading.value = true;
         // Make a request to the server endpoint that fetches weather data
-        const response = await fetch(`http://localhost:7500/api/weather/${cityName.value}`);
+        const response = await fetch(`${selectedEndpoint.apiUrl}${cityName.value}`);
         weather.value = await response.json();
         loading.value = false;
         initializeDetails(); // Call the method to initialize details after weather data is available

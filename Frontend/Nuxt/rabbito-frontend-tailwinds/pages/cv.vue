@@ -1,5 +1,7 @@
 <template>
-    <div class="rounded-lg" style="height:100% !important; opacity:0.8;">
+  <div class="bg-dark p-2 rounded-lg" style="height:100% !important; opacity:0.8;">
+    
+    <!-- <div class="rounded-lg" style="height:100% !important; opacity:0.8;"> -->
       <v-card class="custom-card-outline">
         <!-- Header Section -->
         <v-card-title class="mt-5 text-center">
@@ -207,7 +209,7 @@ p {
     margin: auto;
   }
   .bg-dark {
-    background-image: linear-gradient(360deg, rgba(20, 35, 43, 0.9) 0, rgb(243, 248, 250)  100%);
+    background-image: linear-gradient(0deg, rgba(20, 35, 43, 0.9) 0, rgb(243, 248, 250)  100%);
   }
   /* Add the corporate theme color */
   .logo-image {

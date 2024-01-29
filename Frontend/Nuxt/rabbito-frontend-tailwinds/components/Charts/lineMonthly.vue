@@ -12,10 +12,10 @@
   import { use } from 'echarts/core';
   import { CanvasRenderer } from 'echarts/renderers';
   import { LineChart } from 'echarts/charts';
-  import { TitleComponent, TooltipComponent, LegendComponent } from 'echarts/components';
+  import { TitleComponent, TooltipComponent,ToolboxComponent, LegendComponent } from 'echarts/components';
   import VChart, { THEME_KEY } from 'vue-echarts';
-  
-  use([CanvasRenderer, LineChart, TitleComponent, TooltipComponent, LegendComponent]);
+
+  use([CanvasRenderer, LineChart, TitleComponent, TooltipComponent, ToolboxComponent, LegendComponent]);
   
   export default {
     name: 'ChartsLineDaily',

@@ -1,20 +1,5 @@
-<!-- <template>
-      <div dense align="center" class="inline-row rounded-md p-4 shadow-md rounded-lg">
-        <h3 class="text-xl text-teal-200 font-mono font-semibold">
-            <i class="mdi mdi mdi-fan"></i>
-            {{ fanName }}
-          </h3>
-        <div v-if="pending">Loading...</div>
-        <div v-if="apiResponse" class="mt-1">
-          <i :class="statusIconClass(apiResponse.STATUS)" :style="statusTextStyle(apiResponse.STATUS)" class="mdi-icon"></i>
-          <p :style="statusTextStyle(apiResponse.STATUS)">Status: {{ apiResponse.STATUS }}</p>
-          <p>Action time: {{ formatTimestamp(apiResponse.timestamp) }}</p>
-        </div>
-      </div>
-  </template> -->
   <template>
-    <div>
-      <div dense align="center" class="inline-row rounded-md p-4 shadow-md rounded-lg">
+      <div dense align="center" class="inline-row card-color p-4 shadow-md rounded-lg">
         <h3 class="text-xl text-teal-200 font-mono font-semibold">
           <i class="mdi mdi mdi-fan"></i>
           {{ fanName }}
@@ -22,11 +7,8 @@
         <div v-if="pending">Loading...</div>
         <div v-if="apiResponse" class="mt-1">
           <i :class="statusIconClass(apiResponse.STATUS)" :style="statusTextStyle(apiResponse.STATUS)" class="mdi-icon"></i>
-          <p :style="statusTextStyle(apiResponse.STATUS)">Status: {{ apiResponse.STATUS }}</p>
-          <p>Action time: {{ formatTimestamp(apiResponse.timestamp) }}</p>
         </div>
       </div>
-    </div>
   </template>
   
   <script setup>
@@ -53,7 +35,6 @@
       const response = await fetch(apiUrl, { method: 'GET' });
   
       const responseData = await response.json();
-      // console.log(responseData[0]);
   
       if (!responseData || (responseData.error && !responseData.data)) {
         console.error('No data found for the given input.');
@@ -88,37 +69,22 @@
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
-
-h2 {
-  color: #d8e33c;
-  font-family: Orbitron, sans-serif;
-  text-shadow: 1px 1px rgb(21, 15, 15);
-  font-size: 20px;
-  font-weight: bold;
-}
-h3 {
-font-family: Orbitron, sans-serif;
-text-shadow: 1px 1px rgb(21, 15, 15);
-color: #00E5FF;
-font-size: 18px;
-font-weight: bold;
-}
-
-p {
-  font-family: Rubik, sans-serif;
-  font-size: 15px;
-  font-weight: bold;
-  margin-bottom: 1px;
-}
-
-.rounded-md {
-  border: 1px solid rgb(13, 178, 238);
-  color: #eca543 !important;
-  text-shadow: 1px 1px rgb(21, 15, 15);
-  border-radius: 15px;
+.card-color {
+    background-color: #cbfcfa;
+    border: 1px solid #f59e0b;
+    padding: 10px;
+    border-radius: 15px;
   }
-  .mdi-icon {
-    font-size: 26px; /* Customize the icon size */
-    margin-right: 8px; /* Add spacing if desired */
+h3 {
+    font-family: Chakra Petch, sans-serif;
+    color: deepskyblue;
+    text-align: center;
+    text-shadow: 1px 1px black;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.mdi-icon {
+    font-size: 25px; /* Customize the icon size */
   }
 </style>  

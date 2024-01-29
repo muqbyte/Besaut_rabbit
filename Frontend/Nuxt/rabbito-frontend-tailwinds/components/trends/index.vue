@@ -2,14 +2,25 @@
 
 <template>
   <div class="bg-gray-900 p-2 text-center rounded-lg">
-    <div class="mt-1 btn-layout">
-      <v-btn class="menu-btn" @click="setIndex(1)" color="transparent">
-        <h6 class="btn-font">Daily Report</h6></v-btn>
+    <v-row align="center" class="inline-row mt-1 btn-layout">
+      <v-col cols="2">
+        <v-btn class="menu-btn" @click="setIndex(1)" color="transparent">
+          <h6 class="btn-font">Daily Report</h6></v-btn>
+      </v-col>
+    <!-- <div class="mt-1 btn-layout"> -->
+      <v-col cols="2">
         <v-btn class="menu-btn" @click="setIndex(2)" color="transparent">
           <h6 class="btn-font">Weekly Report</h6></v-btn>
+        </v-col>
+        <v-col cols="2">
       <v-btn class="menu-btn" @click="setIndex(3)" color="transparent">
         <h6 class="btn-font">Report by Date</h6></v-btn>
-    </div>
+      </v-col>
+      <v-col cols="2">
+        <DialogBoxTrendsInfo />
+      </v-col>
+    <!-- </div> -->
+  </v-row>
     <div>
       <component :is="selectedComponent"/>
     </div>
@@ -56,13 +67,15 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
-    h6 {
-      font-family: Righteous, sans-serif;
-      font-weight: 200;
-    }
     p {
       font-family: Oswald, sans-serif;
       font-weight: 800;
+    }
+    .inline-row {
+      display: flex; /* Display columns inline */
+      flex-wrap: wrap; /* Wrap columns if necessary */
+      justify-content: space-between; /* Space between columns */
+      align-items: center; /* Center items vertically */
     }
     .btn-layout {
       align-items: center;
@@ -76,8 +89,9 @@ export default {
     }
 
     .btn-font {
-      font-family: Righteous, sans-serif;
+      font-family: Chakra Petch, sans-serif;
       text-shadow: 1px 1px rgb(21, 15, 15);
-      color: #2196F3 !important;
+      color: #67e8f9 !important;
+      font-weight: bold;
       }
 </style>
