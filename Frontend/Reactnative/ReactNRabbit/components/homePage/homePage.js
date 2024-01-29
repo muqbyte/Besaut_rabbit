@@ -26,6 +26,8 @@ export default function HomePage({ navigation }){
     const [humidity, setHumidity] = useState(null);
     const [amonia, setAmonia] = useState(null);
     const [time, setTime] = useState(null);
+    const [timeHours, setTimeHours] = useState(null);
+    const [timeMinutes, setTimeMinutes]= useState(null);
 
 
 const fetchData = async (id) => {
@@ -55,14 +57,21 @@ const fetchData = async (id) => {
       // const humidityResult=result[1].VALUE;
       const amoniaResult=result[2].VALUE;
       const timeResult=result[0].timestamp;
+      console.log("time", timeResult)
+      const dateObject= new Date(timeResult);
+    
 
+      const formattedTime = dateObject.toLocaleString('en-Gb',{ timeZone: 'UTC' });
+      console.log("formatted", formattedTime)
 
     //   setData(result);
       console.log(result);
       setTemperature(temperatureResult);
       setHumidity(humidityResult);
       setAmonia(amoniaResult);
-      setTime(timeResult);
+      setTime(formattedTime);
+      // setTimeHours(hours);
+      // setTimeMinutes(minutes);
       console.log("temperature ::", temperature)
       console.log("humidity ::", humidity)
       console.log("amonia ::",amonia)
@@ -92,7 +101,7 @@ const handlePress=async(id)=>{
 
                 <View style={{marginTop:15}}>
                    
-                   <ButtonNavigation handlePress={handlePress}/>
+                   <ButtonNavigation handlePress={handlePress} temperature={temperature} humidity={humidity} amonia={amonia}/>
                </View>
 
 
@@ -106,9 +115,9 @@ const handlePress=async(id)=>{
                           <AmoniaPh humidity={humidity} amonia={amonia}/>
                     </View>
 
-                    <View style={{display:"flex", flexDirection:"row", justifyContent:"center", alignItems:"center"}}>
-                      <Text style={{fontFamily:"ChakraPetch-SemiBold", fontSize:20,color:"#00BFFF"}}>Updated at</Text>
-                      <Text>{time}</Text>
+                    <View style={{display:"flex", flexDirection:"row", justifyContent:"center", alignItems:"center",gap:15}}>
+                      <Text style={{fontFamily:"ChakraPetch-SemiBold", fontSize:20,color:"white"}}>Updated at</Text>
+                      <Text style={{fontFamily:"ChakraPetch-SemiBold", fontSize:20,color:"white"}}>{time}</Text>
                     </View>
 
                 {/* <View >

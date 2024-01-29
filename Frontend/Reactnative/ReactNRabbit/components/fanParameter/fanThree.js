@@ -20,8 +20,9 @@ export default function FanThree(props){
 
     const fetchStatus=async()=>{
         try {
-            const response = await fetch('http://13.250.36.154:5000/ranch/controlstatus/RC-03');
+            const response = await fetch('http://tx.eagleattech.com/api/ranch/command/status?id=RC-14');
             const result = await response.json();
+            // console.log("FAN THREE :",result)
             const current=result[0].STATUS
             console.log(current)
             setFanStatus(current)

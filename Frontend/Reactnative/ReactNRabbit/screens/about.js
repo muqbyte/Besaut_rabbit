@@ -8,6 +8,7 @@ import AppLoading from "expo-app-loading";
 import HomeLayout from '../components/layout/homeLayout';
 import MainScrapper from '../components/controlling/mainScrapper';
 import WaterPump from '../components/controlling/waterPump';
+import TowerLight from '../components/towerLight/towerLight';
 
 
 const windowWidth = Dimensions.get('window').width;
@@ -40,15 +41,15 @@ export default function About(){
                 <View style={{backgroundColor:"#29465B",width:"100%", padding:10, marginTop:20}}>
                     <Text style={{color:"white", fontSize:16,fontFamily:"ChakraPetch-Bold",textAlign:"center"}}>EXHAUST FAN</Text>
                 </View>
-                <View style={{marginTop:10}}>
+                <View style={{marginTop:20}}>
                     <MqttControl  imageLogo={Exhaust}/>
                 </View>
 
-                <View style={{backgroundColor:"#29465B",width:"100%", padding:10, marginTop:20}}>
+                <View style={{backgroundColor:"#29465B",width:"100%", padding:10}}>
                     <Text style={{color:"white", fontSize:16,fontFamily:"ChakraPetch-Bold",textAlign:"center"}}>SCRAPPER</Text>
                 </View>
 
-                <View style={{marginTop:20}}>
+                <View >
                     <MainScrapper/>
                 </View>
 
@@ -56,10 +57,9 @@ export default function About(){
                     <Text style={{color:"white", fontSize:16,fontFamily:"ChakraPetch-Bold",textAlign:"center"}}>WATER PUMP</Text>
                 </View>
 
-                <View style={{height:100,display:"flex", flexDirection:"row", justifyContent:"center"}}>
+                <View style={{padding:5,display:"flex", flexDirection:"row", justifyContent:"center",  marginTop:10}}>
                     <WaterPump/>
                 </View>
-            
             </View>
         </HomeLayout>
         

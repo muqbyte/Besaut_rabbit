@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { View, Switch,Dimensions } from 'react-native';
+import { View, Switch,Dimensions,StyleSheet,Image, Text } from 'react-native';
 import axios from 'axios';
-import Controlling from './controlling';
+import LightBulb from '../../assets/lightBulb.png'
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 
-export default function ControllingFanOne() {
+export default function LightOne() {
   const [isEnabled, setIsEnabled] = useState(false);
   const [status, setStatus] = useState(null)
 
@@ -17,7 +17,7 @@ export default function ControllingFanOne() {
     // Update the local state based on the newStatus
     setIsEnabled((previousState) => !previousState);
     const transferValue={
-      "payload":`ch12_${newStatus}`
+      "payload":`ch1_${newStatus}`
     }
 
     try {
@@ -58,8 +58,18 @@ export default function ControllingFanOne() {
 
   return (
     <View style={{display:"flex", flexDirection:"row", justifyContent:"space-between",alignItems:"center",width:windowWidth/2}}>
-        <View>
-            <Controlling title={"RC-01"} status={status}/>
+        <View style={styles.container}>
+
+
+            <View >
+                <Image source={LightBulb} style={{width:60, height:60, tintColor:"#FFFFFF"}} />
+            </View>
+
+
+            <View>
+                <Text style={{fontSize:16, color:"#FFFFFF",fontFamily:"ChakraPetch-SemiBold"}}>GREEN</Text>
+                
+            </View>
         </View>
       <Switch
         trackColor={{ false: '#767577', true: '#81b0ff' }}
@@ -71,3 +81,14 @@ export default function ControllingFanOne() {
     </View>
   );
 }
+
+const styles=StyleSheet.create({
+    container:{
+        display:"flex",
+        flexDirection:"row",
+        justifyContent:"space-evenly",
+        alignItems:"center",
+        // borderWidth:2,
+        width:windowWidth/3
+    },
+})

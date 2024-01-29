@@ -19,9 +19,13 @@ export default function ControllingFanTwo() {
     // Update the local state based on the newStatus
     setIsEnabled((previousState) => !previousState);
 
+    const transferValue={
+      "payload":`ch13_${newStatus}`
+    }
+
     try {
       // Make a POST request to the respective endpoint
-      const res = await axios.get(`https://nr.txio.live/ranch/control/ch2_${newStatus}`);
+      const res = await axios.post(`http://tx.eagleattech.com/api/ranch/control/command`,transferValue);
       console.log(res);
     //   Alert.alert("Successful");
 
@@ -36,7 +40,8 @@ export default function ControllingFanTwo() {
 
   const fetchStatus = async () => {
     try {
-      const response = await fetch('http://13.250.36.154:5000/ranch/controlstatus/RC-02');
+      
+      const response = await fetch('http://tx.eagleattech.com/api/ranch/command/status?id=RC-13');
       const result = await response.json();
       const current = result[0].STATUS;
       console.log(current);
@@ -49,6 +54,10 @@ export default function ControllingFanTwo() {
 
   useEffect(() => {
     fetchStatus();
+    const intervalId = setInterval(fetchStatus, 5000); // 10 seconds in milliseconds
+
+    // Clear the interval when the component is unmounted
+    return () => clearInterval(intervalId);
   }, []);
 
   return (

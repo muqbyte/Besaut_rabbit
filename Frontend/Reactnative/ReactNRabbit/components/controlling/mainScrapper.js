@@ -19,12 +19,12 @@ export default function MainScrapper(){
     return <AppLoading/>;
 }
     return(
-        <View style={{display:"flex", flexDirection:"column", justifyContent:"space-around",alignItems:"center"}}>
+        <View style={{display:"flex", flexDirection:"column", justifyContent:"space-around",alignItems:"center", gap:10}}>
             
             <View style={{borderRadius:20}}>
                 <ScrapperControlling/>   
             </View>
-            <View style={{borderRadius:20}}>
+            <View style={{borderRadius:20,width:"100%"}}>
                  <EmergencyScrapper/>
             </View>
             

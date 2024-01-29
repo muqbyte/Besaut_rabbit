@@ -18,7 +18,7 @@ export default function EmergencyScrapper(){
     return <AppLoading/>;
 }
     return(
-        <View style={{display:"flex", flexDirection:"column",justifyContent:"space-around",alignItems:"center"}}>
+        <View style={{display:"flex", flexDirection:"row",justifyContent:"space-around",alignItems:"center"}}>
 
         <View>
             <Text style={{fontFamily:"ChakraPetch-Bold", color:"red", fontSize:17}}>EMERGENCY BUTTON</Text>

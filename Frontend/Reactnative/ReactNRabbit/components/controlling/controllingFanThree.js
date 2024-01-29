@@ -17,11 +17,16 @@ export default function ControllingFanThree() {
 
     // Update the local state based on the newStatus
     setIsEnabled((previousState) => !previousState);
+    const transferValue={
+      "payload":`ch14_${newStatus}`
+    }
 
     try {
       // Make a POST request to the respective endpoint
-      const res = await axios.get(`https://nr.txio.live/ranch/control/ch3_${newStatus}`);
-      console.log(res);
+      // const res = await axios.get(`https://nr.txio.live/ranch/control/ch3_${newStatus}`);
+      const res = await axios.post(`http://tx.eagleattech.com/api/ranch/control/command`,transferValue);
+
+      console.log("res",res);
     //   Alert.alert("Successful");
 
       // Handle response if needed
@@ -35,7 +40,7 @@ export default function ControllingFanThree() {
 
   const fetchStatus = async () => {
     try {
-      const response = await fetch('http://13.250.36.154:5000/ranch/controlstatus/RC-03');
+      const response = await fetch('http://tx.eagleattech.com/api/ranch/command/status?id=RC-14');
       const result = await response.json();
       const current = result[0].STATUS;
       console.log(current);
@@ -48,6 +53,10 @@ export default function ControllingFanThree() {
 
   useEffect(() => {
     fetchStatus();
+    const intervalId = setInterval(fetchStatus, 5000); // 10 seconds in milliseconds
+
+     // Clear the interval when the component is unmounted
+     return () => clearInterval(intervalId);
   }, []);
 
   return (

@@ -19,8 +19,9 @@ export default function FanOne(props){
 
     const fetchStatus=async()=>{
         try {
-            const response = await fetch('http://13.250.36.154:5000/ranch/controlstatus/RC-01');
+            const response = await fetch('http://tx.eagleattech.com/api/ranch/command/status?id=RC-12');
             const result = await response.json();
+            // console.log("FAN ONE :",result)
             const current=result[0].STATUS
             console.log(current)
             setFanStatus(current)
