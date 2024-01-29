@@ -6,6 +6,17 @@ import HomeLayout from '../components/layout/homeLayout';
 import AppDetails from '../components/detailsPage/appDetails';
 import HomeDetails from '../components/detailsPage/homeDetails';
 import ControlDetails from '../components/detailsPage/controlDetails';
+import {
+    BallIndicator,
+    BarIndicator,
+    DotIndicator,
+    MaterialIndicator,
+    PacmanIndicator,
+    PulseIndicator,
+    SkypeIndicator,
+    UIActivityIndicator,
+    WaveIndicator,
+  } from 'react-native-indicators';
 
 
 const windowWidth = Dimensions.get('window').width;
@@ -27,6 +38,10 @@ export default function Analysis(){
                 <View style={styles.container}>
 
                     <View style={styles.title}>
+
+                    <View>
+                    <PulseIndicator color='red' />
+                    </View>
                         <View>
                             <Text style={{color:"#00BFFF", fontSize:24,fontFamily:"ChakraPetch-Bold"}}>RABBIT IoT SYSTEM</Text>
                         </View>
@@ -77,7 +92,7 @@ const styles=StyleSheet.create({
         flexDirection:"column",
         alignContent:"center",
         alignItems:"center",
-        marginTop:45,
+        marginTop:(windowWidth>400)?30:45,
         marginBottom:95,
         // marginHorizontal:20,
         // borderWidth:2,
@@ -89,7 +104,8 @@ const styles=StyleSheet.create({
         justifyContent:"center",
         alignItems:"center",
         width:"100%",
-        gap:45,
+        gap:(windowWidth>400)?45:20,
+
         // borderWidth:2,
         borderTopLeftRadius:20,
         borderTopRightRadius:20,

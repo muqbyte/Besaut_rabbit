@@ -19,19 +19,19 @@ export default function ButtonNavigation({handlePress, temperature, humidity, am
     return(
         <View style={styles.directory}>
              <TouchableOpacity style={styles.button} onPress={()=>handlePress('RB-01')}>
-                        <Text style={{fontFamily:"ChakraPetch-Bold", fontSize:20,color:(temperature>25 || humidity>70 || amonia>8)? "red" : "white"}}>RB-01</Text>
+                        <Text style={{fontFamily:"ChakraPetch-Bold", fontSize:20,color:"white"}}>RB-01</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.button} onPress={()=>handlePress('RB-02')}>
-                        <Text style={{fontFamily:"ChakraPetch-Bold", fontSize:20,color:(temperature>25 || humidity>70 || amonia>8)? "red" : "white"}} >RB-02</Text>
+                        <Text style={{fontFamily:"ChakraPetch-Bold", fontSize:20,color:"white"}} >RB-02</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.button}  onPress={()=>handlePress('RB-03')}>
-                        <Text style={{fontFamily:"ChakraPetch-Bold", fontSize:20,color:(temperature>28 || humidity>80 || amonia>8)? "red" : "white"}}>RB-03</Text>
+                        <Text style={{fontFamily:"ChakraPetch-Bold", fontSize:20,color:"white"}}>RB-03</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.button}  onPress={()=>handlePress('RB-04')}>
-                        <Text style={{fontFamily:"ChakraPetch-Bold", fontSize:20,color:(temperature>25 || humidity>70 || amonia>8)? "red" : "white"}}>RB-04</Text>
+                        <Text style={{fontFamily:"ChakraPetch-Bold", fontSize:20,color:"white"}}>RB-04</Text>
                     </TouchableOpacity>
         </View>
     )
