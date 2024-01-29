@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Image,Alert,Dimensions } from 'react-native';
 import { useFonts } from 'expo-font';
-import AppLoading from "expo-app-loading";
+
 
 
 const windowWidth = Dimensions.get('window').width;
@@ -64,8 +64,8 @@ const offNotification =()=>{
    }
 
    if (!fontsLoaded) {
-    return <AppLoading/>;
-    }
+    return null;
+  }
 
     return(
         <View style={styles.container}>

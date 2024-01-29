@@ -6,7 +6,7 @@ import ControllingFanTwo from './controllingFanTwo';
 import ControllingFanThree from './controllingFanThree';
 import ControllingFanFour from './controllingFanFour';
 import { useFonts } from 'expo-font';
-import AppLoading from "expo-app-loading";
+
 
 
 export default function Indicator(props){
@@ -18,8 +18,8 @@ export default function Indicator(props){
         'ChakraPetch-SemiBold': require('../../assets/fonts/ChakraPetch-SemiBold.ttf'),
   });
   if (!fontsLoaded) {
-    return <AppLoading/>;
-}
+    return null;
+  }
 
     return(
         <View style={styles.container}>

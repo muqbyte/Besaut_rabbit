@@ -4,22 +4,11 @@ import Exhaust from '../assets/exhaust.png'
 import MqttControl from '../components/mqtt/mqttControl';
 import Rabbit from '../assets/rabbit.png'
 import { useFonts } from 'expo-font';
-import AppLoading from "expo-app-loading";
 import HomeLayout from '../components/layout/homeLayout';
 import MainScrapper from '../components/controlling/mainScrapper';
 import WaterPump from '../components/controlling/waterPump';
 import TowerLight from '../components/towerLight/towerLight';
-import {
-    BallIndicator,
-    BarIndicator,
-    DotIndicator,
-    MaterialIndicator,
-    PacmanIndicator,
-    PulseIndicator,
-    SkypeIndicator,
-    UIActivityIndicator,
-    WaveIndicator,
-  } from 'react-native-indicators';
+import {PulseIndicator} from 'react-native-indicators';
 
 
 const windowWidth = Dimensions.get('window').width;
@@ -34,8 +23,8 @@ export default function About(){
         'ChakraPetch-SemiBold': require('../assets/fonts/ChakraPetch-SemiBold.ttf'),
   });
   if (!fontsLoaded) {
-    return <AppLoading/>;
-}
+    return null;
+  }
     return(
         <HomeLayout>
                 <View style={styles.container}>

@@ -12,6 +12,10 @@ export default function AmoniaPh(props){
         'ChakraPetch-Bold': require('../../assets/fonts/ChakraPetch-Bold.ttf'),
         'ChakraPetch-SemiBold': require('../../assets/fonts/ChakraPetch-SemiBold.ttf')
       });
+
+      if (!fontsLoaded) {
+        return null;
+      }
     return(
         <View style={{display:"flex",flexDirection:"row",justifyContent:"center",gap:10}}>
                    <View style={{display:"flex",flexDirection:"row",justifyContent:"space-evenly",width:170,gap:5}}>

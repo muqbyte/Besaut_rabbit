@@ -1,22 +1,12 @@
 import { StyleSheet, Text, View, StatusBar, Image,Dimensions} from 'react-native';
 import { useFonts } from 'expo-font';
-import AppLoading from "expo-app-loading";
 import Rabbit from '../assets/rabbit.png'
 import HomeLayout from '../components/layout/homeLayout';
 import AppDetails from '../components/detailsPage/appDetails';
 import HomeDetails from '../components/detailsPage/homeDetails';
 import ControlDetails from '../components/detailsPage/controlDetails';
-import {
-    BallIndicator,
-    BarIndicator,
-    DotIndicator,
-    MaterialIndicator,
-    PacmanIndicator,
-    PulseIndicator,
-    SkypeIndicator,
-    UIActivityIndicator,
-    WaveIndicator,
-  } from 'react-native-indicators';
+import { PulseIndicator} from 'react-native-indicators';
+
 
 
 const windowWidth = Dimensions.get('window').width;
@@ -31,8 +21,8 @@ export default function Analysis(){
         'ChakraPetch-SemiBold': require('../assets/fonts/ChakraPetch-SemiBold.ttf'),
   });
   if (!fontsLoaded) {
-    return <AppLoading/>;
-}
+    return null;
+  }
     return(
         <HomeLayout>
                 <View style={styles.container}>

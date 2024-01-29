@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { useFonts } from 'expo-font';
-import AppLoading from "expo-app-loading";
+
 import LightOne from './lightOne';
 
 
@@ -14,8 +14,8 @@ export default function TowerLight(props){
         'ChakraPetch-SemiBold': require('../../assets/fonts/ChakraPetch-SemiBold.ttf'),
   });
   if (!fontsLoaded) {
-    return <AppLoading/>;
-}
+    return null;
+  }
 
     return(
         <View style={styles.container}>

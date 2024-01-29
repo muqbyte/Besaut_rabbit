@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, StatusBar, Image,Dimensions,TouchableOpacity} from 'react-native';
 import ScrapperMachine from '../../assets/MachineScrapper.png'
 import { useFonts } from 'expo-font';
-import AppLoading from "expo-app-loading";
+
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -14,8 +14,8 @@ export default function ScrapperControlling(){
         'ChakraPetch-SemiBold': require('../../assets/fonts/ChakraPetch-SemiBold.ttf'),
   });
   if (!fontsLoaded) {
-    return <AppLoading/>;
-}
+    return null;
+  }
     return(
         <View style={{display:"flex", flexDirection:"row",justifyContent:"space-around", alignItems:"center",width:windowWidth-70}}>
 

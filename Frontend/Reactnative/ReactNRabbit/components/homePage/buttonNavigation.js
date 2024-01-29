@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { View, Text,Switch,StyleSheet,Dimensions, TouchableOpacity } from 'react-native';
 import axios from 'axios';
 import { useFonts } from 'expo-font';
-import AppLoading from "expo-app-loading";
-
 const deviceHeight=Dimensions.get('window').height;
 const deviceWidth=Dimensions.get('window').width;
 
@@ -14,8 +12,8 @@ export default function ButtonNavigation({handlePress, temperature, humidity, am
         'ChakraPetch-SemiBold': require('../../assets/fonts/ChakraPetch-SemiBold.ttf')
       });
       if (!fontsLoaded) {
-        return <AppLoading/>;
-    }
+        return null;
+      }
     return(
         <View style={styles.directory}>
              <TouchableOpacity style={styles.button} onPress={()=>handlePress('RB-01')}>

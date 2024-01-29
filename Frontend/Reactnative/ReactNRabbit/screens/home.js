@@ -6,23 +6,12 @@ import Exhaust from '../assets/exhaust.png'
 import Rabbit from '../assets/rabbit.png'
 import FanParameter from '../components/fanParameter/fanParameter';
 import { useFonts } from 'expo-font';
-// import AppLoading from "expo-app-loading";
 import HomeLayout from '../components/layout/homeLayout';
 import HomePage from '../components/homePage/homePage';
 import * as SplashScreen from 'expo-splash-screen';
-import {
-    BallIndicator,
-    BarIndicator,
-    DotIndicator,
-    MaterialIndicator,
-    PacmanIndicator,
-    PulseIndicator,
-    SkypeIndicator,
-    UIActivityIndicator,
-    WaveIndicator,
-  } from 'react-native-indicators';
+import {PulseIndicator} from 'react-native-indicators';
 
-SplashScreen.preventAutoHideAsync();
+
 
 
 const windowWidth = Dimensions.get('window').width;
@@ -36,19 +25,7 @@ export default function Home({ navigation }){
         'ChakraPetch-Light': require('../assets/fonts/ChakraPetch-Light.ttf'),
         'ChakraPetch-SemiBold': require('../assets/fonts/ChakraPetch-SemiBold.ttf'),
   });
-  useEffect(() => {
-    async function prepare() {
-      await SplashScreen.preventAutoHideAsync();
-    }
-    prepare();
-  }, []);
-
-  const onLayoutRootView = useCallback(async () => {
-    if (fontsLoaded) {
-      await SplashScreen.hideAsync();
-    }
-  }, [fontsLoaded]);
-
+ 
   if (!fontsLoaded) {
     return null;
   }

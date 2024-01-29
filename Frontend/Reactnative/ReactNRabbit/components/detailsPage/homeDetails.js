@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, StatusBar, Image,Dimensions} from 'react-native';
 import { useFonts } from 'expo-font';
-import AppLoading from "expo-app-loading";
+
 
 
   const windowWidth = Dimensions.get('window').width;
@@ -15,8 +15,8 @@ export default function HomeDetails(){
   });
 
   if (!fontsLoaded) {
-    return <AppLoading/>;
-}
+    return null;
+  }
     return(
         <View style={{display:"flex", flexDirection:"column",backgroundColor:"#29465B", padding:10, borderRadius:10, width:windowWidth-30}}>
             <View style={styles.appInformation}>

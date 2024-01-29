@@ -10,7 +10,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from './screens/home';
 import HomeStack from './routes/homeStack';
 import { useFonts } from 'expo-font';
-import AppLoading from "expo-app-loading";
+
 
 
 

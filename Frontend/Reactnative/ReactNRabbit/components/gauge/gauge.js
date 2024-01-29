@@ -25,9 +25,13 @@ export default function Gauge(props) {
   var option
   useEffect(() => {
     // chart.current.setBackgroundColor('#eff0dd')
-    chart.current.setBackgroundColor('#082F49');
-    chart.current.setOption(option);
-    
+    if(chart.current!=null){
+      chart.current.setBackgroundColor('#082F49');
+      chart.current.setOption(option);
+
+    }
+  
+  
     // console.log(props.sensor)
   }, [temperature]);
 
@@ -96,9 +100,9 @@ export default function Gauge(props) {
 
   
   
-  // if(!fontsLoaded){
-  //   return null
-  // }
+  if (!fontsLoaded) {
+    return null;
+  }
 
   return (
     <View style={styles.chartContainer}>

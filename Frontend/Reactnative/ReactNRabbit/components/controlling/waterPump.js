@@ -3,7 +3,7 @@ import { Text,View, Switch,Dimensions, Image } from 'react-native';
 import WaterPumpIcon from '../../assets/waterPump.png'
 import axios from 'axios';
 import { useFonts } from 'expo-font';
-import AppLoading from "expo-app-loading";
+
 
 
 const windowWidth = Dimensions.get('window').width;
@@ -26,10 +26,13 @@ export default function WaterPump() {
 
     // Update the local state based on the newStatus
     setIsEnabled((previousState) => !previousState);
-
+    const transferValue={
+      "payload":`ch16_${newStatus}`
+    }
     try {
       // Make a POST request to the respective endpoint
-      const res = await axios.get(`https://nr.txio.live/ranch/control/ch1_${newStatus}`);
+      const res = await axios.post(`http://tx.eagleattech.com/api/ranch/control/command`,transferValue);
+
       console.log(res);
     //   Alert.alert("Successful");
 
@@ -60,8 +63,8 @@ export default function WaterPump() {
   }, []);
 
   if (!fontsLoaded) {
-    return <AppLoading/>;
-}
+    return null;
+  }
 
   return (
     <View style={{display:"flex", flexDirection:"row", justifyContent:"space-between",alignItems:"center",width:windowWidth/2}}>

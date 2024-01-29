@@ -3,7 +3,6 @@ import { View, Text,Switch,StyleSheet,Dimensions, TouchableOpacity } from 'react
 import axios from 'axios';
 import Gauge from '../gauge/gauge';
 import { useFonts } from 'expo-font';
-import AppLoading from "expo-app-loading";
 import FanParameter from '../fanParameter/fanParameter';
 import ButtonNavigation from './buttonNavigation';
 import AmoniaPh from './amoniaPh';
@@ -92,8 +91,8 @@ const handlePress=async(id)=>{
     fetchData(ranch);
   },[])
   if (!fontsLoaded) {
-    return <AppLoading/>;
-}
+    return null;
+  }
     return(
        
             
@@ -116,8 +115,8 @@ const handlePress=async(id)=>{
                     </View>
 
                     <View style={{display:"flex", flexDirection:"row", justifyContent:"center", alignItems:"center",gap:15}}>
-                      <Text style={{fontFamily:"ChakraPetch-SemiBold", fontSize:20,color:"white"}}>Updated at</Text>
-                      <Text style={{fontFamily:"ChakraPetch-SemiBold", fontSize:20,color:"white"}}>{time}</Text>
+                      <Text style={{fontFamily:"ChakraPetch-Regular", fontSize:16,color:"white"}}>Updated at</Text>
+                      <Text style={{fontFamily:"ChakraPetch-Regular", fontSize:16,color:"white"}}>{time}</Text>
                     </View>
 
                 {/* <View >

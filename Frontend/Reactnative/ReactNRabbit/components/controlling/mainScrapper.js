@@ -1,8 +1,9 @@
 import { StyleSheet, Text, View, StatusBar, Image,Dimensions,TouchableOpacity} from 'react-native';
 import ScrapperControlling from './scrapperControlling';
 import EmergencyScrapper from './emergencyScrapper';
-import AppLoading from "expo-app-loading";
 import { useFonts } from 'expo-font';
+import axios from 'axios';
+
 
 
 const windowWidth = Dimensions.get('window').width;
@@ -15,9 +16,12 @@ export default function MainScrapper(){
         'ChakraPetch-Light': require('../../assets/fonts/ChakraPetch-Light.ttf'),
         'ChakraPetch-SemiBold': require('../../assets/fonts/ChakraPetch-SemiBold.ttf'),
   });
+
+
+ 
   if (!fontsLoaded) {
-    return <AppLoading/>;
-}
+    return null;
+  }
     return(
         <View style={{display:"flex", flexDirection:"column", justifyContent:"space-around",alignItems:"center", gap:10}}>
             
