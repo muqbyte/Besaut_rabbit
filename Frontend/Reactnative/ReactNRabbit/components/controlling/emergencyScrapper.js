@@ -26,7 +26,7 @@ export default function EmergencyScrapper(){
     try {
         const res = await axios.post(`http://tx.eagleattech.com/api/ranch/control/command`,transferValue);
       // Handle the response as needed
-      Alert.alert('Success', 'POST request successful!', [{ text: 'OK' }]);
+      Alert.alert('Success', 'SCRAPPER STOPPED', [{ text: 'OK' }]);
       console.log('POST request successful:');
     } catch (error) {
       // Handle errors
