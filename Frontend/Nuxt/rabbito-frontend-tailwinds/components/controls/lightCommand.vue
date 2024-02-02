@@ -12,16 +12,10 @@
   import FanControl from './deviceOnOff';
   
   const devices = [
-    { name: 'Line 1', command: 'ch10' },
-    // { name: 'Line 2', command: 'ch9' },
-    { name: 'XF 1', command: 'ch11' },
-    { name: 'XF 2', command: 'ch12' },
-    { name: 'XF 3', command: 'ch13' },
-    { name: 'XF 4', command: 'ch14' },
-    { name: 'CP', command: 'ch16' },
-    // { name: '!!!', command: 'ch2' },
-    // { name: 'AL 1', command: 'ch3' },
-    // { name: 'AL 2', command: 'ch4' },
+    // { name: 'Ready', command: 'ch1' },
+    { name: 'Warn', command: 'ch2' },
+    { name: 'AL 1', command: 'ch3' },
+    { name: 'AL 2', command: 'ch4' },
   ];
   </script>
   

@@ -77,6 +77,10 @@
         return 'Fan 3';
       case 'RC-04':
         return 'Fan 4';
+      case 'RC-05':
+        return 'Pump';
+      case 'RC-06':
+        return 'Sweeper';
       default:
         return sid;
     }

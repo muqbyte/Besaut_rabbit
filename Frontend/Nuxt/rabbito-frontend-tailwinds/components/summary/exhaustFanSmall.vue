@@ -13,10 +13,10 @@
   import ControlStatus from './ControlStatusSmall';
   
   const fans = [
-    { name: 'Fan 1', command: 'RC-01' },
-    { name: 'Fan 2', command: 'RC-02' },
-    { name: 'Fan 3', command: 'RC-03' },
-    { name: 'Fan 4', command: 'RC-04' },
+    { name: 'XF 1', command: 'RC-11' },
+    { name: 'XF 2', command: 'RC-12' },
+    { name: 'XF 3', command: 'RC-13' },
+    { name: 'XF 4', command: 'RC-14' },
   ];
   </script>
 <style scoped>

@@ -12,7 +12,10 @@ export const useEndpoints = defineStore('endpoints', {
       { id: "EP-06", apiUrl: "http://tx.eagleattech.com/api/ranch/lastseen/data" },
       { id: "EP-07", apiUrl: "http://tx.eagleattech.com/api/ranch/command/status?id=" },
       { id: "EP-08", apiUrl: "http://tx.eagleattech.com/api/weather/"},
-      { id: "EP-09", apiUrl: "http://tx.eagleattech.com/api/weather/forecast/"}
+      { id: "EP-09", apiUrl: "http://tx.eagleattech.com/api/weather/forecast/"},
+      { id: "EP-10", apiUrl: "http://tx.eagleattech.com/api/ranch/now?id="},
+      { id: "EP-11", apiUrl: "http://tx.eagleattech.com/api/ranch/nh3now?id="},
+      { id: "EP-12", apiUrl: "http://tx.eagleattech.com/api/ranch/signalnow?id="}
     ],
   }),
 

@@ -13,7 +13,8 @@
           >
             <TrendsNonComplianceCount/>
             <SummaryExhaustFanSmall />
-            <SummarySignalStrength/>
+            <!-- <SummarySignalStrength/> -->
+            <SummaryRssiStatusSmall />
           </div>
         </div>
       </div>

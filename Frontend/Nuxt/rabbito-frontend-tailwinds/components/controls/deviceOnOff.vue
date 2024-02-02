@@ -1,6 +1,6 @@
 <template>
       <div dense align="center" class="inline-row rounded-md p-4 shadow-md rounded-lg">
-        <h3 class="mb-2">{{ fanName }}</h3>
+        <h3 class="mb-2">{{ deviceName }}</h3>
         <v-row dense>
             <v-col>
                 <v-btn class="btnStyle" color="transparent">
@@ -13,7 +13,7 @@
             </v-col>
             <v-col>
                 <v-btn class="btnStyle" @click="submitPayload" color="transparent">
-                    <h5 class="btn-font">Send</h5>
+                    <h5 class="btn-font"><i class="mdi mdi mdi-keyboard-return" style="font-size: 20px; color:#cffafe;"></i></h5>
                   </v-btn>
             </v-col>
         </v-row>
@@ -28,11 +28,11 @@
   import { ref } from 'vue';
   import { useEndpoints } from '@/stores/endpoints'; // Adjust the path based on your project structure
 
-  const props = defineProps(['fanName', 'fanCommand']);
-  const selectedPayload = ref(`${props.fanCommand}_OFF` || '');
+  const props = defineProps(['deviceName', 'deviceCommand']);
+  const selectedPayload = ref(`${props.deviceCommand}_OFF` || '');
   const payloadOptions = [
-    { value: `${props.fanCommand}_ON`, label: 'Turn ON' },
-    { value: `${props.fanCommand}_OFF`, label: 'Turn OFF' }
+    { value: `${props.deviceCommand}_ON`, label: 'Turn ON' },
+    { value: `${props.deviceCommand}_OFF`, label: 'Turn OFF' }
   ];
   const apiResponse = ref(null);
   const getUrl = useEndpoints();

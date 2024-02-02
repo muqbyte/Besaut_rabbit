@@ -1,11 +1,33 @@
 <template>
     <div class="bg-gray-900 p-2 text-center rounded-lg">
-      <!-- Content -->
-      <!-- <realtime-thermal-sensor/> -->
-      <controls-main-command />
-      <SummaryRecentThermal />
-      <!-- <ControlsFanStatus /> -->
-      <SummaryExhaustFan />
+      <v-row dense>
+        <v-col cols="8">
+          <!-- <SummaryExhaustFan /> -->
+          <controls-main-command />
+        </v-col>
+        <v-col cols="4">
+          <!-- <SummaryPumpSweeper /> -->
+          <ControlsLightCommand />
+        </v-col>
+      </v-row>
+      <v-row dense>
+        <v-col cols="8">
+          <SummaryMainStatus />
+        </v-col>
+        <v-col cols="4">
+          <SummaryLightStatus />
+        </v-col>
+      </v-row>
+
+      <v-row dense>
+        <v-col cols="6">
+          <SummaryRecentData />
+        </v-col>
+        <v-col cols="6">
+          <!-- <SummaryLightStatus /> -->
+          <SummarySignalRecentData />
+        </v-col>
+      </v-row>
     </div>
   </template>
   

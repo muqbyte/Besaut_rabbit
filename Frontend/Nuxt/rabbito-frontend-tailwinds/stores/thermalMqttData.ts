@@ -15,7 +15,7 @@ interface UpdateStationsPayload {
   export const useMqttData = defineStore('mqttData', {
     state: () => ({
       Stations: Array.from({ length: 4 }, (_, index) => ({
-        name: `RB-${index + 1}`,
+        name: `ST-${index + 1}`,
         SensorData: [
           { type: 'temperature', value: 25, unit: '°C' },
           { type: 'humidity', value: 70, unit: '%' },

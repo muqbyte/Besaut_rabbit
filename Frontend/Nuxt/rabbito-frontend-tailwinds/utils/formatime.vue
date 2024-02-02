@@ -26,7 +26,7 @@
 </style>
   <script setup>
   import { ref, onMounted } from 'vue';
-  import { formatTimestamp } from '../utils/databaseTimestampFormatter';
+  import { DBformatTimestamp } from '../utils/databaseTimestampFormatter';
   import { formatRealTimestamp } from '../utils/realtimestampFormatter';
   import { formatDateTimestamp } from '../utils/dateTimestampFormatter';
   const timestamp = ref(Date.now());

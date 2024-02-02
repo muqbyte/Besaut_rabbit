@@ -13,14 +13,18 @@
                   <i class="mdi mdi-chart-donut"></i>
                   {{ station.name }}
                 </h4>
-                <div>
-                  <p bold class="text-data" :style="formatTemperatureColor(station.SensorData[0].value)">
-                    <i class="mdi mdi-thermometer" :style="formatTemperatureColor(station.SensorData[0].value)"></i>
-                     {{ station.SensorData[0].value }}°C</p>
-                  <p bold class="text-data" :style="formatColorStyle(station.SensorData[1].value)">
-                    <i class="mdi mdi-water-percent" :style="formatColorStyle(station.SensorData[1].value)"> </i> 
-                     {{ station.SensorData[1].value }}%</p>
-                </div>
+                  <v-row dense>
+                      <v-col>
+                        <p bold class="text-data" :style="formatTemperatureColor(station.SensorData[0].value)">
+                          <i class="mdi mdi-thermometer" :style="formatTemperatureColor(station.SensorData[0].value)"></i>
+                          {{ station.SensorData[0].value }}°C</p>
+                      </v-col>
+                      <v-col>
+                      <p bold class="text-data" :style="formatColorStyle(station.SensorData[1].value)">
+                        <i class="mdi mdi-water-percent" :style="formatColorStyle(station.SensorData[1].value)"> </i> 
+                        {{ station.SensorData[1].value }}%</p>
+                      </v-col>
+                  </v-row>
               </div>
             </v-col>
             </v-row>

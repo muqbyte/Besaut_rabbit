@@ -14,7 +14,7 @@ interface UpdateAmmoniaStationsPayload {
   export const useAmmoniaMqttData = defineStore('ammoniaMqttData', {
     state: () => ({
       Stations: Array.from({ length: 4 }, (_, index) => ({
-        name: `RB-${index + 1}`,
+        name: `ST-${index + 1}`,
         SensorData: [
           { type: 'ammonia', value: 25, unit: 'ppm' },
           { type: 'rssi', value: -110, unit: '' },

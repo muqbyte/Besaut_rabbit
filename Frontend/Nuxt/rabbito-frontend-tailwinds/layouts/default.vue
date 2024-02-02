@@ -6,10 +6,10 @@
           <nuxt-link to="https://www.eagleattech.com/" class="mr-4">
             <img src="/EAGLE.png" width="90" height="auto" />
           </nuxt-link>
-          <nuxt-link to="/" class="text-blue-500 hover:underline mr-4">Radar</nuxt-link>
-          <nuxt-link to="/weather" class="text-blue-500 hover:underline mr-4">Weather</nuxt-link>
-          <nuxt-link to="/control" class="text-blue-500 hover:underline mr-4">Control</nuxt-link>
-          <nuxt-link to="/trends" class="text-blue-500 hover:underline">Reporting</nuxt-link>
+          <nuxt-link to="/" class="text-blue-500 hover:underline mr-4"> <i class="mdi mdi mdi-radio-tower" style="font-size: 24px; color:#0e7490;"></i></nuxt-link>
+          <!-- <nuxt-link to="/weather" class="text-blue-500 hover:underline mr-4"><i class="mdi mdi mdi-weather-fog" style="font-size: 24px; color:#0e7490;"></i></nuxt-link> -->
+          <nuxt-link to="/control" class="text-blue-500 hover:underline mr-4"><i class="mdi mdi mdi-cogs" style="font-size: 24px; color:#0e7490;"></i></nuxt-link>
+          <nuxt-link to="/trends" class="text-blue-500 hover:underline"><i class="mdi mdi mdi-trending-up" style="font-size: 24px; color:#0e7490;"></i></nuxt-link>
         </nav>
         <div class="ml-auto">
           <Formatime />

@@ -1,4 +1,5 @@
   <template>
+    <Client-Only>
       <div dense align="center" class="inline-row card-color p-4 shadow-md rounded-lg">
         <h3 class="text-xl text-teal-200 font-mono font-semibold">
           <i class="mdi mdi mdi-fan"></i>
@@ -9,6 +10,7 @@
           <i :class="statusIconClass(apiResponse.STATUS)" :style="statusTextStyle(apiResponse.STATUS)" class="mdi-icon"></i>
         </div>
       </div>
+    </Client-Only>
   </template>
   
   <script setup>
@@ -70,7 +72,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
 .card-color {
-    background-color: #cbfcfa;
+    background-color: #09090b;
     border: 1px solid #f59e0b;
     padding: 10px;
     border-radius: 15px;
