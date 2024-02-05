@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 
-let endpointAuth = `http://127.0.0.1:7500/api/auth`
-let endpointUser = `http://127.0.0.1:7500/api/user/register`
+let endpointAuth = `http://tx.eagleattech.com/api/auth`
+let endpointUser = `http://tx.eagleattech.com/api/user/register`
 
 interface UserPayloadInterface {
   email: string;

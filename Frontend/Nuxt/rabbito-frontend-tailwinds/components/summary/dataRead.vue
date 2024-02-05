@@ -24,7 +24,7 @@
           <h5><i class="mdi mdi mdi-timelapse"></i> {{ formatTimestamp(apiResponse[0].timestamp) }}</h5>
         </div>
         <div v-else>
-          <h5 class="warning-text">System is offline. No data received.</h5>
+          <h5 class="warning-text blink">System is offline. Check connection.</h5>
         </div>
       </div>
     </Client-Only>
@@ -153,5 +153,17 @@ h5 {
   .mdi-icon {
     font-size: 20px; /* Customize the icon size */
     margin-right: 8px; /* Add spacing if desired */
+  }
+  @keyframes blink {
+    0%, 50%, 100% {
+      opacity: 1;
+    }
+    25%, 75% {
+      opacity: 0;
+    }
+  }
+  
+  .blink {
+    animation: blink 3s infinite;
   }
 </style>  

@@ -17,7 +17,7 @@
         </v-row>
       </div>
       <div v-else>
-        <h5 class="warning-text">System is offline. No data received.</h5>
+        <h5 class="warning-text blink">System is offline.</h5>
       </div>
     </div>
   </Client-Only>
@@ -123,5 +123,17 @@ p {
     font-size: 16px; 
     color:#d8e33c;
     margin-right: 5px; /* Add spacing if desired */
+  }
+  @keyframes blink {
+    0%, 50%, 100% {
+      opacity: 1;
+    }
+    25%, 75% {
+      opacity: 0;
+    }
+  }
+  
+  .blink {
+    animation: blink 3s infinite;
   }
 </style>  

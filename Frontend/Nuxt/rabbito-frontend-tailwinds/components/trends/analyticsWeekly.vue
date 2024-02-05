@@ -27,6 +27,7 @@
           </v-col>
         </v-row>
         <div v-if="loading" class="loading-message">Loading...</div>
+        <div v-if="error" class="warning-text blink">{{ error }}</div>
         <div v-if="dailyTrends && Array.isArray(dailyTrends)" class="mt-3">
           <h2 class="text-xl font-semibold mb-4">Weekly Data Report for Station {{ selectedSensor }}  between 6am to 6pm</h2>
           <!-- Use v-if to conditionally render the selected display type -->
@@ -46,6 +47,7 @@
   import { useEndpoints } from '@/stores/endpoints'; // Adjust the path based on your project structure
   
   const loading = ref(false);
+  const error = ref(null);
   const selectedSensor = ref('RB-01');
   const sensorOptions = [
     { value: 'RB-01', label: 'Station 1' },
@@ -61,7 +63,7 @@
   
   // Find the endpoint with id "EP-04"
   const selectedEndpoint = getUrl.getEndpoints.find(endpoint => endpoint.id === 'EP-04');
-  const { data: dailyTrends, error, refresh } = useAsyncData(
+  const { data: dailyTrends, refresh } = useAsyncData(
     'dailyTrends',
     async () => {
       try {
@@ -173,6 +175,25 @@
     text-shadow: 1px 1px rgb(21, 15, 15);
     font-size: 14px;
     color: #00E5FF !important;
+    }
+  .warning-text {
+      font-family: Rubik, sans-serif;
+      font-size: 18px;
+      margin-bottom: 1px;
+      color: #F44336 !important;
+      text-shadow: 1px 1px #450a0a;
+    }
+  @keyframes blink {
+      0%, 50%, 100% {
+        opacity: 1;
+      }
+      25%, 75% {
+        opacity: 0;
+      }
+    }
+    
+  .blink {
+      animation: blink 7s infinite;
     }
 </style>
     
