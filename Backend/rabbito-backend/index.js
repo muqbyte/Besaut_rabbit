@@ -7,16 +7,16 @@ const passport = require( 'passport' );
 
 app.use(cors())
 
- //Passport middleware
-//  app.use(passport.initialize());
-//  app.use(passport.session());
-//  passport.serializeUser(function (user, done) {
-//    done(null, user);
-//  });
+//  Passport middleware
+ app.use(passport.initialize());
+ app.use(passport.session());
+ passport.serializeUser(function (user, done) {
+   done(null, user);
+ });
  
-//  passport.deserializeUser(async function (user, done) {
-//    done(null, user);
-//  });
+ passport.deserializeUser(async function (user, done) {
+   done(null, user);
+ });
 
 
 app.use( express.json() );
@@ -34,6 +34,21 @@ app.use("/api/user", require("./routes/user/user"))
 // Tuah Database
 app.use("/api/ranch", require("./routes/ranch"))
 app.use("/api/weather", require("./routes/weather"))
+
+
+let query = `CREATE TABLE IF NOT EXISTS rabbitto_users (id varchar(100), username varchar(100), email varchar(50), password varchar(150),role varchar(50), timestamp timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP);`
+
+connection.query(query, (err,results) =>{
+    if(err) {
+        console.log(err)
+      }
+      else(
+        console.log(results)
+      )
+}
+)
+
+
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
