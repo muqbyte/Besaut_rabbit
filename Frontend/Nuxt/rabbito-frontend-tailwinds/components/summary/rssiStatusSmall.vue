@@ -1,6 +1,6 @@
 <template>
     <div>
-      <h3 class="main-header mt-1" style="text-align: center;">RSSI and SNR Status </h3>
+      <h3 class="main-header mt-2" style="text-align: center;">RSSI and SNR Status </h3>
       <v-row dense class="container mx-auto py-3">
         <v-col v-for="station in stations" :key="station.command" class="grid gap-2">
           <DataPoint :stationName="station.name" :stationCommand="station.command" :icon="station.icon"/>

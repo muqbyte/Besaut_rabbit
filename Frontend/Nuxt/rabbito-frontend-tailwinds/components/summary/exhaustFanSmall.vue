@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h3 class="main-header mt-5" style="text-align: center;">Exhaust Fan Status </h3>
+        <h3 class="main-header mt-2  mb-2" style="text-align: center;">Exhaust Fan (XF) Status </h3>
         <v-row dense class="container mx-auto py-1">
             <v-col v-for="fan in fans" :key="fan.command" class="grid gap-2">
             <ControlStatus :fanName="fan.name" :fanCommand="fan.command" />

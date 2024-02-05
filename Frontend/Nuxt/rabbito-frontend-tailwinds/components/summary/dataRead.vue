@@ -23,6 +23,9 @@
             </v-row>
           <h5><i class="mdi mdi mdi-timelapse"></i> {{ formatTimestamp(apiResponse[0].timestamp) }}</h5>
         </div>
+        <div v-else>
+          <h5 class="warning-text">System is offline. No data received.</h5>
+        </div>
       </div>
     </Client-Only>
   </template>
@@ -128,7 +131,13 @@ p {
   margin-bottom: 1px;
   color: #43ece6 !important;
 }
-
+.warning-text {
+  font-family: Rubik, sans-serif;
+  font-size: 14px;
+  margin-bottom: 1px;
+  color: #f87171 !important;
+  text-shadow: 1px 1px #450a0a;
+}
 h5 {
   font-family: Rubik, sans-serif;
   font-size: 14px;

@@ -95,7 +95,7 @@ const pageTitle = computed(() => {
     z-index: -10;
     background-color: #273136;
     background-image: linear-gradient(180deg, rgba(50, 70, 80, 0.9) 0, #0d101b 100%);
-    background-image: url("/rabbit_barn_16.png");
+    background-image: url("/rabbit_barn_18.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: initial;
@@ -125,7 +125,7 @@ const pageTitle = computed(() => {
       z-index: -10;
       background-color: #273136;
       background-image: linear-gradient(180deg, rgba(50, 70, 80, 0.9) 0, #0d101b 100%);
-      background-image: url("/rabbit_barn_16.png");
+      background-image: url("/rabbit_barn_18.jpg");
       background-repeat: no-repeat;
       background-position: center;
       background-attachment: initial;
