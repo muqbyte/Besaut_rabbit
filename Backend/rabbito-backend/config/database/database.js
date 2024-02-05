@@ -1,11 +1,12 @@
 const mysql = require("mysql");
 const connection = mysql.createPool ({
   // host: "nr.txio.live",
-   host: "13.250.36.154",
+  //  host: "13.250.36.154", // AWS
   // host: "sql",
-  user: "digitalman",
+  host: "datcbackend.eagleattech.com",
+  user: "root",
   password: "c1vG7R34",
-  database: "tracker",
+  database: "rabbitto",
   port: 3306,
 });
 

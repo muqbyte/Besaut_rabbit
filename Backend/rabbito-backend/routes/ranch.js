@@ -16,8 +16,8 @@ router.get("/now", (req, res, next) => {
         FROM 
         sensor_data 
         WHERE SID = '${id}' 
-        AND (TYPE LIKE '%TMP%' OR TYPE LIKE '%RH%' OR TYPE LIKE '%NH3%') 
-        AND DATE(timestamp) = CURDATE() ORDER BY timestamp DESC LIMIT 3;`;
+        AND (TYPE LIKE '%TMP%' OR TYPE LIKE '%RH%') 
+        AND DATE(timestamp) = CURDATE() ORDER BY timestamp DESC LIMIT 2;`;
          
     
     connection.query(q, [id], function (error, rows, fields) {
@@ -40,6 +40,79 @@ router.get("/now", (req, res, next) => {
         res.header("Content-Type", "application/json; charset=utf-8");
         res.send(ret);
     });
+});
+// Today's Recent Data
+// http://localhost:7500/api/ranch/nh3now?id=RB-01
+router.get("/nh3now", (req, res, next) => {
+  const { id } = req.query;
+  // Use parameterized query to prevent SQL injection
+  // const q = `SELECT * FROM sensor_data WHERE SID = ? AND DATE(timestamp) = CURDATE() ORDER BY timestamp DESC LIMIT 1;`;
+  const q = `
+      SELECT *, 
+      CONVERT_TZ(timestamp, 'UTC', 'Asia/Kuala_Lumpur') AS timestamp 
+      FROM 
+      sensor_data 
+      WHERE SID = '${id}' 
+      AND (TYPE LIKE '%NH3%') 
+      AND DATE(timestamp) = CURDATE() ORDER BY timestamp DESC LIMIT 1;`;
+       
+  
+  connection.query(q, [id], function (error, rows, fields) {
+      if (error) {
+          // Handle the error properly, don't just log it
+          console.log(error);
+          return res.status(500).json({ error: "An internal server error occurred" });
+      }
+
+      // Check if any rows are returned
+      if (rows.length === 0) {
+          return res.status(404).json({ error: "No data found for the given tid" });
+      }
+
+      // rows[0] contains the first row returned by the query
+      // const ret = JSON.stringify(rows[0]);
+      // let row[0] included in the array
+      const ret = JSON.stringify(rows);
+
+      res.header("Content-Type", "application/json; charset=utf-8");
+      res.send(ret);
+  });
+});
+// http://localhost:7500/api/ranch/signalnow?id=RB-01
+router.get("/signalnow", (req, res, next) => {
+  const { id } = req.query;
+  // Use parameterized query to prevent SQL injection
+  // const q = `SELECT * FROM sensor_data WHERE SID = ? AND DATE(timestamp) = CURDATE() ORDER BY timestamp DESC LIMIT 1;`;
+  const q = `
+      SELECT *, 
+      CONVERT_TZ(timestamp, 'UTC', 'Asia/Kuala_Lumpur') AS timestamp 
+      FROM 
+      signal_data 
+      WHERE SID = '${id}' 
+      AND (TYPE LIKE '%RSSI%' OR TYPE LIKE '%SNR%') 
+      AND DATE(timestamp) = CURDATE() ORDER BY timestamp DESC LIMIT 2;`;
+       
+  
+  connection.query(q, [id], function (error, rows, fields) {
+      if (error) {
+          // Handle the error properly, don't just log it
+          console.log(error);
+          return res.status(500).json({ error: "An internal server error occurred" });
+      }
+
+      // Check if any rows are returned
+      if (rows.length === 0) {
+          return res.status(404).json({ error: "No data found for the given tid" });
+      }
+
+      // rows[0] contains the first row returned by the query
+      // const ret = JSON.stringify(rows[0]);
+      // let row[0] included in the array
+      const ret = JSON.stringify(rows);
+
+      res.header("Content-Type", "application/json; charset=utf-8");
+      res.send(ret);
+  });
 });
 // Last seen sensor data
 router.get("/lastseen/data", (req, res, next) => {
@@ -117,7 +190,6 @@ router.get("/command/status", (req, res, next) => {
       SELECT *, CONVERT_TZ(timestamp, 'UTC', 'Asia/Kuala_Lumpur') AS timestamp 
       FROM control_data
       WHERE SID = '${id}' 
-      AND TYPE LIKE '%FAN%'
       ORDER BY timestamp DESC
       LIMIT 1; `;
        

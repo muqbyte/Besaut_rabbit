@@ -1,5 +1,30 @@
+# # Use an official Node.js LTS (Long Term Support) version as a base image
+# FROM node:14
+
+# # Create app directory
+# WORKDIR /usr/src/app
+
+# # Copy package.json and package-lock.json to the working directory
+# COPY package*.json ./
+
+# # Install app dependencies
+# RUN npm install
+
+# # Copy the rest of the application code to the working directory
+# COPY . .
+
+# # Expose the port your app runs on
+# EXPOSE 7500
+
+# # Set the timezone environment variable
+# ENV TZ Asia/Kuala_Lumpur
+
+# # Command to run the application
+# CMD [ "node", "index.js" ]
+
+
 # FROM node:16
-FROM mhart/alpine-node:12
+FROM mhart/alpine-node:16
 
 # Create app directory
 WORKDIR /usr/src/app
