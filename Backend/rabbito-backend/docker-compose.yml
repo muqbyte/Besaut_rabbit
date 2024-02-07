@@ -1,23 +1,20 @@
-version: "3"
-
+version: "2"
 services:
   backend:
-    image: rabbito-backend
+    image: aneh2killa/besout-backend
+    volumes:
+      - besout_backend:/var/lib/besout_backend
     restart: always
-    container_name: besout-backend
-    ports:
-      - "7500:7500"
     environment:
       TZ: Asia/Kuala_Lumpur
       VIRTUAL_HOST: tx.eagleattech.com
       LETSENCRYPT_HOST: tx.eagleattech.com
-      LETSENCRYPT_EMAIL: tx.eagleattech.com
-    networks:
-      - net-backend
-      - net-web
-
+      LETSENCRYPT_EMAIL: tronexia@gmail.com
+    ports:
+      - "7500:7500"
+volumes:
+  besout_backend:
 networks:
-  net-backend:
-    name: net-exp-db
-  net-web:
-    name: nginxproxy_default
+ default:
+  external:
+   name: nginxproxy_default
