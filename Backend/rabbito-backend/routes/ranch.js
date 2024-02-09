@@ -42,6 +42,47 @@ router.get("/now", (req, res, next) => {
     });
 });
 // Today's Recent Data
+// http://localhost:7500/api/ranch/allnow?id=RB-01
+router.get("/allnow", (req, res, next) => {
+  const { id } = req.query;
+  const q = `
+      SELECT *, 
+      CONVERT_TZ(timestamp, 'UTC', 'Asia/Kuala_Lumpur') AS timestamp 
+      FROM 
+      sensor_data 
+      WHERE SID = '${id}' 
+      AND (TYPE LIKE '%TMP%' OR TYPE LIKE '%RH%' OR TYPE LIKE '%NH3%') 
+      AND DATE(timestamp) = CURDATE() ORDER BY timestamp DESC LIMIT 3;`;
+  
+  connection.query(q, [id], function (error, rows, fields) {
+      if (error) {
+          // Handle the error properly, don't just log it
+          console.log(error);
+          return res.status(500).json({ error: "An internal server error occurred" });
+      }
+
+      // Check if any rows are returned
+      if (rows.length === 0) {
+          return res.status(404).json({ error: "No data found for the given tid" });
+      }
+
+      // Separate the data into objects based on the type
+      const data = { TMP: [], RH: [], NH3: [] };
+      rows.forEach(row => {
+          if (row.TYPE.includes('TMP')) {
+              data.TMP.push(row);
+          } else if (row.TYPE.includes('RH')) {
+              data.RH.push(row);
+          } else if (row.TYPE.includes('NH3')) {
+              data.NH3.push(row);
+          }
+      });
+
+      res.header("Content-Type", "application/json; charset=utf-8");
+      res.json(data);
+  });
+});
+// Today's Recent Data
 // http://localhost:7500/api/ranch/nh3now?id=RB-01
 router.get("/nh3now", (req, res, next) => {
   const { id } = req.query;
