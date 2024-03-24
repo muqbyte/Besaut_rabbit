@@ -43,7 +43,7 @@ router.get("/now", (req, res, next) => {
 });
 // Today's Recent Data
 // http://localhost:7500/api/ranch/allnow?id=RB-01
-router.get("/allnow", (req, res, next) => {
+router.get("/allNow", (req, res, next) => {
   const { id } = req.query;
   const q = `
       SELECT *, 
@@ -74,6 +74,116 @@ router.get("/allnow", (req, res, next) => {
           } else if (row.TYPE.includes('RH')) {
               data.RH.push(row);
           } else if (row.TYPE.includes('NH3')) {
+              data.NH3.push(row);
+          }
+      });
+
+      res.header("Content-Type", "application/json; charset=utf-8");
+      res.json(data);
+  });
+});
+// Today's Recent Data TMP
+// http://localhost:7500/api/ranch/tmpnow?id=RB-01
+router.get("/tmpNow", (req, res, next) => {
+  const { id } = req.query;
+  const q = `
+      SELECT *, 
+      CONVERT_TZ(timestamp, 'UTC', 'Asia/Kuala_Lumpur') AS timestamp 
+      FROM 
+      sensor_data 
+      WHERE SID = '${id}' 
+      AND (TYPE LIKE '%TMP%') 
+      AND DATE(timestamp) = CURDATE() ORDER BY timestamp DESC LIMIT 1;`;
+  
+  connection.query(q, [id], function (error, rows, fields) {
+      if (error) {
+          // Handle the error properly, don't just log it
+          console.log(error);
+          return res.status(500).json({ error: "An internal server error occurred" });
+      }
+
+      // Check if any rows are returned
+      if (rows.length === 0) {
+          return res.status(404).json({ error: "No data found for the given tid" });
+      }
+
+      // Separate the data into objects based on the type
+      const data = { TMP: []};
+      rows.forEach(row => {
+          if (row.TYPE.includes('TMP')) {
+              data.TMP.push(row);
+          }
+      });
+      res.header("Content-Type", "application/json; charset=utf-8");
+      res.json(data);
+  });
+});
+// Today's Recent Data RH
+// http://localhost:7500/api/ranch/rhnow?id=RB-01
+router.get("/rhNow", (req, res, next) => {
+  const { id } = req.query;
+  const q = `
+      SELECT *, 
+      CONVERT_TZ(timestamp, 'UTC', 'Asia/Kuala_Lumpur') AS timestamp 
+      FROM 
+      sensor_data 
+      WHERE SID = '${id}' 
+      AND (TYPE LIKE '%RH%') 
+      AND DATE(timestamp) = CURDATE() ORDER BY timestamp DESC LIMIT 1;`;
+  
+  connection.query(q, [id], function (error, rows, fields) {
+      if (error) {
+          // Handle the error properly, don't just log it
+          console.log(error);
+          return res.status(500).json({ error: "An internal server error occurred" });
+      }
+
+      // Check if any rows are returned
+      if (rows.length === 0) {
+          return res.status(404).json({ error: "No data found for the given tid" });
+      }
+
+      // Separate the data into objects based on the type
+      const data = { RH: [] };
+      rows.forEach(row => {
+          if (row.TYPE.includes('RH')) {
+              data.RH.push(row);
+          } 
+      });
+      res.header("Content-Type", "application/json; charset=utf-8");
+      res.json(data);
+  });
+});
+
+// Today's Recent Data
+// http://localhost:7500/api/ranch/ammonianow?id=RB-01
+router.get("/ammoniaNow", (req, res, next) => {
+  const { id } = req.query;
+  const q = `
+      SELECT *, 
+      CONVERT_TZ(timestamp, 'UTC', 'Asia/Kuala_Lumpur') AS timestamp 
+      FROM 
+      sensor_data 
+      WHERE SID = '${id}' 
+      AND (TYPE LIKE '%NH3%') 
+      AND DATE(timestamp) = CURDATE() ORDER BY timestamp DESC LIMIT 1;`;
+  
+  connection.query(q, [id], function (error, rows, fields) {
+      if (error) {
+          // Handle the error properly, don't just log it
+          console.log(error);
+          return res.status(500).json({ error: "An internal server error occurred" });
+      }
+
+      // Check if any rows are returned
+      if (rows.length === 0) {
+          return res.status(404).json({ error: "No data found for the given tid" });
+      }
+
+      // Separate the data into objects based on the type
+      const data = {  NH3: [] };
+      rows.forEach(row => {
+          if (row.TYPE.includes('NH3')) {
               data.NH3.push(row);
           }
       });
