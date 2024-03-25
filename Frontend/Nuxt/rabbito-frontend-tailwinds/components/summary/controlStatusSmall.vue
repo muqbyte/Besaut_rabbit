@@ -2,8 +2,8 @@
     <Client-Only>
       <div dense align="center" class="inline-row card-color p-4 shadow-md rounded-lg">
         <h3 class="text-xl text-teal-200 font-mono font-semibold">
-          <i class="mdi mdi mdi-fan"></i>
-          {{ fanName }}
+          <i :class="iconClass" style="font-size: 20px; color:#d8e33c;"></i>
+          {{ deviceName }}
         </h3>
         <div v-if="pending">Loading...</div>
         <div v-if="apiResponse" class="mt-1">
@@ -17,8 +17,8 @@
   import { ref, onMounted } from 'vue';
   import { useEndpoints } from '@/stores/endpoints'; // Adjust the path based on your project structure
 
-  const props = defineProps(['fanName', 'fanCommand']);
-  const selectedStation = ref(props.fanCommand);
+  const props = defineProps(['deviceName', 'deviceCommand', 'icon']);
+  const selectedStation = ref(props.deviceCommand);
   const apiResponse = ref(null);
   const getUrl = useEndpoints();
   
@@ -60,8 +60,9 @@
     return status === 'ON' ? 'mdi mdi-power' : 'mdi mdi-power-off';
   };
   
+  const iconClass = `mdi ${props.icon || 'mdi-fan'}`;
   const statusTextStyle = (status) => {
-    const textColorStyle = status === 'ON' ? 'color: #84cc16' : 'color: #f59e0b';
+    const textColorStyle = status === 'ON' ? 'color: #22c55e' : 'color: #f59e0b';
     return textColorStyle;
   };
   </script>

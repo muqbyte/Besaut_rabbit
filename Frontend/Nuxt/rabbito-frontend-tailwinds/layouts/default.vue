@@ -1,7 +1,7 @@
 <template>
   <div class="gradient">
     <header>
-      <div class="flex w-screen bg-gray-100 h-12 px-4 items-center nav-text">
+      <div  v-if="isMobile" class="flex w-screen bg-gray-100 h-12 px-4 items-center nav-text">
         <nav class="flex items-center">
           <nuxt-link to="https://www.eagleattech.com/" class="mr-4">
             <img src="/EAGLE.png" width="90" height="auto" />
@@ -30,7 +30,61 @@
           class="ml-auto"
           style="display: flex; justify-content: center; align-items: center"
         >
-          <Formatime />
+ 
+          <nav>
+            <nuxt-link
+              v-if="authenticated"
+              @click="logout"
+              class="text-blue-500 hover:underline logout"
+              ><i
+                class="mdi mdi mdi-logout"
+                style="font-size: 24px; color: #0e7490; padding: 0 10px"
+              ></i
+            ></nuxt-link>
+            <nuxt-link
+              v-else
+              @click="login"
+              class="text-blue-500 hover:underline logout"
+              ><i
+                class="mdi mdi mdi-login"
+                style="font-size: 24px; color: #0e7490; padding: 0 10px"
+              ></i
+            ></nuxt-link>
+          </nav>
+        </div>
+        <!-- <div class="text-blue-500 font-bold ml-auto">{{ pageTitle }}</div> -->
+        <!-- <NavigationModes/> -->
+      </div>
+
+      <div  v-else class="flex w-screen bg-gray-100 h-12 px-4 items-center nav-text">
+        <nav class="flex items-center">
+          <nuxt-link to="https://www.eagleattech.com/" class="mr-4">
+            <img src="/EAGLE.png" width="90" height="auto" />
+          </nuxt-link>
+          <nuxt-link to="/" class="text-blue-500 hover:underline mr-4">
+            <i
+              class="mdi mdi mdi-radio-tower"
+              style="font-size: 24px; color: #0e7490"
+            ></i
+          ></nuxt-link>
+          <nuxt-link to="/control" class="text-blue-500 hover:underline mr-4"
+            ><i
+              class="mdi mdi mdi-cogs"
+              style="font-size: 24px; color: #0e7490"
+            ></i
+          ></nuxt-link>
+          <nuxt-link to="/trends" class="text-blue-500 hover:underline"
+            ><i
+              class="mdi mdi mdi-trending-up"
+              style="font-size: 24px; color: #0e7490"
+            ></i
+          ></nuxt-link>
+        </nav>
+        <div
+          class="ml-auto"
+          style="display: flex; justify-content: center; align-items: center"
+        > 
+        <Formatime />
           <nav>
             <nuxt-link
               v-if="authenticated"
@@ -56,7 +110,7 @@
         <!-- <NavigationModes/> -->
       </div>
     </header>
-    <main class="p-4">
+    <main class="p-1">
       <slot />
     </main>
     <footer
@@ -75,6 +129,22 @@
 <script setup lang="ts">
 import { useRoute } from "vue-router";
 import Formatime from "~/utils/formatime.vue";
+
+const isMobile = ref(false);
+
+onMounted(() => {
+  // Check if the window object is defined before accessing innerWidth
+  if (typeof window !== 'undefined') {
+    isMobile.value = window.innerWidth <= 600;
+  }
+  
+  // Update isMobile when the window is resized
+  window.addEventListener('resize', () => {
+    if (typeof window !== 'undefined') {
+      isMobile.value = window.innerWidth <= 600;
+    }
+  });
+});
 
 const currentYear = ref(new Date().getFullYear());
 
@@ -112,6 +182,7 @@ const pageTitle = computed(() => {
   }
 });
 </script>
+
 
 <style scoped>
 html {
@@ -174,7 +245,7 @@ html {
     right: 0;
     height: 100%;
     background-color: transparent;
-    background-image: url(/pattern.png);
+    background-image: url("/pattern.png");
     background-size: 4.6875rem;
     background-repeat: repeat;
     background-attachment: initial;

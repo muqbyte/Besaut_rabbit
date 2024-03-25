@@ -33,12 +33,12 @@ interface UpdateStationsPayload {
           indexStation < this.Stations.length
         ) {
           // Log the update
-          console.log(`Updating station ${indexStation}:`);
-          console.log(`  Temperature: ${temperature}`);
-          console.log(`  Humidity: ${humidity}`);
-          console.log(`  rssi: ${rssi}`);
-          console.log(`  snr: ${snr}`);
-          console.log(`  SID: ${SID}`);
+          // console.log(`Updating station ${indexStation}:`);
+          // console.log(`  Temperature: ${temperature}`);
+          // console.log(`  Humidity: ${humidity}`);
+          // console.log(`  rssi: ${rssi}`);
+          // console.log(`  snr: ${snr}`);
+          // console.log(`  SID: ${SID}`);
           
           // Update the sensor data
           const station = this.Stations[indexStation];

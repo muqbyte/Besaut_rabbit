@@ -13,7 +13,7 @@
                         </v-col>
                         <v-col cols="6">
                           <h3 bold class="text-data"
-                      :style="formatColorStyle(station.SensorData[1].value)">{{ station.SensorData[1].value}} %</h3>
+                      :style="dewFormatColorStyle(station.SensorData[1].value)">{{ station.SensorData[1].value}} %</h3>
                         </v-col>
                       </v-row>
                 </v-col>
@@ -29,7 +29,7 @@ import { ref, computed, onMounted } from 'vue';
 import { useMqttData } from '~/stores/thermalMqttData';
 import { randomizeId } from '~/utils/randomIdGen';
 import { formatTemperatureColor } from '~/utils/temperatureColorFormatter'
-import { formatColorStyle } from '~/utils/dewColorformatter';
+import { dewFormatColorStyle } from '~/utils/dewColorformatter';
 const mqttDataStore = useMqttData();
 
 const mqttDataLoaded = computed(() => mqttDataStore.Stations.length > 0);

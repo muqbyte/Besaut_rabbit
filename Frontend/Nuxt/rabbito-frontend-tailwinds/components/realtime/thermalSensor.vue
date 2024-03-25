@@ -20,7 +20,7 @@
                   </v-col>
                   <v-col cols="7">
                     <h3 bold class="text-data"
-                :style="formatColorStyle(sensor.value)">{{ sensor.value }} {{ sensor.unit }}</h3>
+                :style="dewFormatColorStyle(sensor.value)">{{ sensor.value }} {{ sensor.unit }}</h3>
                   </v-col>
                 </v-row>
               </template>
@@ -38,7 +38,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue';
 import { useMqttData } from '~/stores/thermalMqttData';
-import { formatColorStyle } from '~/utils/dewColorformatter';
+import { dewFormatColorStyle } from '~/utils/dewColorformatter';
 import { randomizeId } from '~/utils/randomIdGen';
 const max = { TMP: 40, RH: 100 };
 const unit = { TMP: '°C', RH: '%' };

@@ -1,4 +1,4 @@
-// utils/timestampFormatter.js
+// utils/databaseTimestampFormatter.js
 
 function DBformatTimestamp(timestamp) {
     const utcDate = new Date(timestamp);

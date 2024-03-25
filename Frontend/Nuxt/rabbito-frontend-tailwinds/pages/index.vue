@@ -1,12 +1,35 @@
-<!-- pages/control.vue -->
-
+<!-- pages/index.vue -->
 <template>
-  <div class="bg-dark p-2 rounded-lg" style="height:650px !important; opacity:0.8;">
+  <div>
+    <div v-if="isMobile" class="bg-dark p-1 rounded-lg" style="height:100% !important;">
+      <mobileView />
+    </div>
+    <div v-else class="bg-dark p-2 rounded-lg" style="height:650px !important; opacity:0.8;">
       <Summary />
+    </div>
   </div>
 
 </template>
+<script setup>
+import mobileView from '~/components/summary/mobile.vue';
+import { ref, onMounted } from 'vue';
 
+const isMobile = ref(false);
+
+onMounted(() => {
+  // Check if the window object is defined before accessing innerWidth
+  if (typeof window !== 'undefined') {
+    isMobile.value = window.innerWidth <= 600;
+  }
+  
+  // Update isMobile when the window is resized
+  window.addEventListener('resize', () => {
+    if (typeof window !== 'undefined') {
+      isMobile.value = window.innerWidth <= 600;
+    }
+  });
+});
+</script>
 
 
 <style scoped>

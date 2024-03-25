@@ -33,7 +33,7 @@
 
       </div>
       <div style="width: 100%; display:flex; justify-content:center">
-        <button @click.prevent="login" class="button">Login</button>
+        <v-btn @click.prevent="login" class="v-btn">Login</v-btn>
 
       </div>
     </div>
@@ -51,7 +51,7 @@ const { authenticated } = storeToRefs(useAuthStore()); // make authenticated sta
 
 const user = ref({
   email: 'seaic.iot@gmail.com',
-  password: '123456',
+  password: '00000',
 });
 const router = useRouter();
 
@@ -96,7 +96,7 @@ const register = () => {
   padding: 16px;
   margin-top:20px;
   margin: auto;
-  width: 500px;
+  width: 350px;
   opacity: 0.85;
   border: 1px solid #f59e0b !important;
 
@@ -118,7 +118,7 @@ const register = () => {
     box-sizing: border-box;
     /* opacity: 0.8; */
   }
-  .button {
+  .v-btn {
     background-color: rgb(34, 197, 94);
     color: white;
     padding: 8px 20px;
@@ -131,7 +131,7 @@ const register = () => {
     
   }
 
-  .button:hover {
+  .v-btn:hover {
     opacity: 0.8;
   }
   .cancelbtn {
@@ -145,7 +145,7 @@ const register = () => {
     padding-top: 16px;
   }
 
-  /* Change styles for span and cancel button on extra small screens */
+  /* Change styles for span and cancel v-btn on extra small screens */
   @media screen and (max-width: 300px) {
     span.psw {
       display: block;

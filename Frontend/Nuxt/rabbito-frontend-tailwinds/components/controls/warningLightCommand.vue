@@ -12,8 +12,8 @@
   import deviceControl from './deviceOnOff';
   
   const devices = [
-    { name: 'L1', command: 'ch1', icon: 'mdi mdi-checkbox-marked-circle-outline' },
-    { name: 'L2', command: 'ch2', icon: 'mdi mdi-alert' },
+    { name: 'L3', command: 'ch3', icon: 'mdi mdi-alarm-bell' },
+    { name: 'L4', command: 'ch4', icon: 'mdi mdi-alarm-light' },
   ];
   </script>
   

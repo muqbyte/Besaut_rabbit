@@ -14,9 +14,9 @@
   </template> -->
   <template>
     <Client-Only>
-      <div dense align="center" class="inline-row rounded-md p-4 shadow-md rounded-lg">
+      <div dense align="center" class="inline-row rounded-md p-1 shadow-md rounded-lg">
         <h3 class="text-xl text-teal-200 font-mono font-semibold">
-          <i :class="iconClass" style="font-size: 26px; color:#d8e33c;"></i>
+          <i :class="iconClass" style="font-size: 20px; color:#d8e33c;"></i>
           {{ deviceName }}
         </h3>
         <div v-if="pending">Loading...</div>
@@ -100,13 +100,13 @@ h3 {
 font-family: Orbitron, sans-serif;
 text-shadow: 1px 1px rgb(21, 15, 15);
 color: #00E5FF;
-font-size: 18px;
+font-size: 14px;
 font-weight: bold;
 }
 
 p {
   font-family: Rubik, sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   margin-bottom: 1px;
 }

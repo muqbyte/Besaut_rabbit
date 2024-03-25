@@ -235,7 +235,7 @@
     padding: 16px;
     margin-top:20px;
     margin: auto;
-    width: 500px;
+    width: 350px;
     opacity: 0.85;
     border: 1px solid #f59e0b !important;
   

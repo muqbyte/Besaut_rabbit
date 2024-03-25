@@ -1,44 +1,43 @@
 <template>
-      <div dense align="center" class="inline-row rounded-md p-4 shadow-md rounded-lg">
-        <h3 class="mb-2">{{ deviceName }}</h3>
-        <v-row dense>
-            <v-col>
-                <v-btn class="btnStyle" color="transparent">
-                    <select v-model="selectedPayload" class="color-data" aria-label="Action Selection" style="font-size: 13px;">
-                      <option v-for="command in payloadOptions" :key="command.value" :value="command.value" class="btn-font">
-                        {{ command.label }}
-                      </option>
-                    </select>
-                  </v-btn>
-            </v-col>
-            <v-col>
-                <v-btn class="btnStyle" @click="submitPayload" color="transparent">
-                    <h5 class="btn-font"><i class="mdi mdi mdi-keyboard-return" style="font-size: 20px; color:#cffafe;"></i></h5>
-                  </v-btn>
-            </v-col>
-        </v-row>
-        </div>
-      <!-- <div v-if="apiResponse">
-        <h2>API Response:</h2>
-        <p>{{ apiResponse }}</p>
-      </div> -->
-  </template>
+  <div dense align="center" class="inline-row rounded-md p-2 shadow-md rounded-lg">
+    <h3 class="mb-2">
+      <i :class="iconClass" style="font-size: 20px; color:#d8e33c;"></i>
+      {{ deviceName }}
+    </h3>
+    <v-row dense>
+      <v-col>
+        <v-btn class="btnStyle" color="transparent" small> <!-- Added small prop -->
+          <select v-model="selectedPayload" class="color-data" aria-label="Action Selection" style="font-size: 12px;">
+            <option v-for="command in payloadOptions" :key="command.value" :value="command.value" class="btn-font">
+              {{ command.label }}
+            </option>
+          </select>
+        </v-btn>
+      </v-col>
+      <v-col>
+        <v-btn class="btnStyle" @click="submitPayload" color="transparent" small> <!-- Added small prop -->
+          <h5 class="btn-font"><i class="mdi mdi mdi-keyboard-return" style="font-size: 12px; color:#cffafe;"></i></h5>
+        </v-btn>
+      </v-col>
+    </v-row>
+  </div>
+</template>
   
   <script setup>
   import { ref } from 'vue';
   import { useEndpoints } from '@/stores/endpoints'; // Adjust the path based on your project structure
 
-  const props = defineProps(['deviceName', 'deviceCommand']);
+  const props = defineProps(['deviceName', 'deviceCommand', 'deviceIcon']);
   const selectedPayload = ref(`${props.deviceCommand}_OFF` || '');
   const payloadOptions = [
-    { value: `${props.deviceCommand}_ON`, label: 'Turn ON' },
-    { value: `${props.deviceCommand}_OFF`, label: 'Turn OFF' }
+    { value: `${props.deviceCommand}_ON`, label: 'ON' },
+    { value: `${props.deviceCommand}_OFF`, label: 'OFF' }
   ];
   const apiResponse = ref(null);
   const getUrl = useEndpoints();
    // Find the endpoint with id "EP-02"
   const selectedEndpoint = getUrl.getEndpoints.find(endpoint => endpoint.id === 'EP-01');
-  
+  const iconClass = `mdi ${props.deviceIcon || 'mdi-fan'}`;
   const submitPayload = async () => {
     try {
       const apiUrl = `${selectedEndpoint.apiUrl}`;
@@ -84,7 +83,7 @@ h3 {
   font-family: Orbitron, sans-serif;
   text-shadow: 1px 1px rgb(21, 15, 15);
   color: #00E5FF;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: bold;
 }
 .color-data {
@@ -103,6 +102,9 @@ h3 {
     }
 .btnStyle {
     border: 1px solid rgb(13, 185, 238);
+    min-width: auto; /* Remove minimum width to make button size smaller */
+    height: 24px; /* Adjust height as needed */
+    padding: 0 6px; /* Adjust padding as needed */
     }
 
 .btn-font {

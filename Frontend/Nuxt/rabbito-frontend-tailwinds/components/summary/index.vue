@@ -12,9 +12,9 @@
             class="w-4/12 md:w-1/3 columnBorder"
           >
             <TrendsNonComplianceCount/>
-            <SummaryExhaustFanSmall />
+            <exhaustFanSmall />
             <!-- <SummarySignalStrength/> -->
-            <SummaryRssiStatusSmall />
+            <rssiStatusSmall />
           </div>
         </div>
       </div>
@@ -24,7 +24,8 @@
   
   <script setup>  
   import { ref, onMounted, onBeforeUnmount } from 'vue';
-  
+  import exhaustFanSmall from './exhaustFanSmall.vue';
+  import rssiStatusSmall from './rssiStatusSmall.vue';
   // Access the Utility function timeFormatter
   import { formatRealTimestamp } from '../utils/realtimestampFormatter';
   const formattedRealTimestamp = ref('');

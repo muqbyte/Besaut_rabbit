@@ -2,19 +2,15 @@
   <div class="bg-gray-900 text-center rounded-lg">
     <div class="btn-layout">
       <v-btn class="menu-btn" @click="setIndex(1)">
-        <i class="mdi mdi-fan mdi-icon"></i>
+        <i class="mdi mdi-update mdi-icon"></i>
       </v-btn>
       <v-btn class="menu-btn" @click="setIndex(2)">
-        <i class="mdi mdi-gamepad-circle mdi-icon"></i>
+        <i class="mdi mdi-check-circle mdi-icon"></i>
       </v-btn>
       <v-btn class="menu-btn" @click="setIndex(3)">
-        <i class="mdi mdi-lightbulb-on-outline mdi-icon"></i>
+        <i class="mdi mdi-play-circle mdi-icon"></i>
       </v-btn>
-      <v-btn class="menu-btn" @click="setIndex(4)">
-        <i class="mdi mdi-light-switch mdi-icon"></i>
-      </v-btn>
-      
-      <controlInfo class="summary-info" />
+      <summaryInfo class="summary-info" />
     </div>
     <div>
       <component :is="selectedComponent"/>
@@ -24,19 +20,17 @@
 
 
 <script>
-import fanCommand from './fanCommand.vue';
-import deviceCommand from './deviceCommand.vue'
-import lightCommand from './lightCommand.vue'
-import warningLightCommand from './warningLightCommand.vue';
-import controlInfo from '../dialogBox/controlInfo.vue';
+import realTimeData from './mobileRTData.vue'
+import operationStatus from './operationStatusMobile.vue'
+import NonComplianceCount from '../trends/nonComplianceCount.vue';
+import summaryInfo from '../dialogBox/summaryInfo.vue';
 export default {
   name: 'center-summary',
   components: {
-    fanCommand,
-    deviceCommand,
-    lightCommand,
-    warningLightCommand,
-    controlInfo // Import and register the summaryInfo component
+    realTimeData,
+    NonComplianceCount,
+    operationStatus,
+    summaryInfo // Import and register the summaryInfo component
   },
   data() {
     return {
@@ -47,13 +41,11 @@ export default {
     selectedComponent() {
       switch (this.index) {
         case 1:
-          return 'fanCommand';
+          return 'realTimeData';
         case 2:
-          return 'deviceCommand';
+          return 'NonComplianceCount';
         case 3:
-          return 'lightCommand';
-        case 4:
-          return 'warningLightCommand';
+          return 'operationStatus';
       }
     }
   },
@@ -78,9 +70,7 @@ export default {
   justify-content: center; /* Center items horizontally */
 }
 .menu-btn {
-  width: 30px;
-  border: 1px solid rgb(13, 178, 238);
-  margin: 2px;
+  margin: 5px;
   background-color:#083344; 
   opacity: 0.8;
 }
@@ -89,6 +79,6 @@ export default {
   font-size: 24px;
 }
 .summary-info {
-  margin-left: 2px; /* Adjust margin for spacing between buttons and summaryInfo */
+  margin-left: 10px; /* Adjust margin for spacing between buttons and summaryInfo */
 }
 </style>

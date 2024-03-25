@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  nuxt:
+    image: aneh2killa/rabbitranch
+    restart: always
+    container_name: rabbitradar
+    ports:
+      - "7150:3000"
+    environment:
+      VIRTUAL_HOST: rabbitradar.txio.live
+#      VIRTUAL_PORT: 1880
+      LETSENCRYPT_HOST: rabbitradar.txio.live
+      LETSENCRYPT_EMAIL: tronexia@gmail.com
+networks:
+ default:
+  external:
+    name: nginxproxy_default
