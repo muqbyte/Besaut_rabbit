@@ -6,7 +6,7 @@
 
 <script>
 definePageMeta({
-  middleware: ["is-login"],
+  middleware: ["is-login","is-not-user"],
 });
 </script>
 

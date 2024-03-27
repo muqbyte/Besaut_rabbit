@@ -40,6 +40,8 @@
   </div>
 </template>
 <script lang="ts" setup>
+const { $jwtAuth } = useNuxtApp()
+console.log('jwtAuth', $jwtAuth)
 import { storeToRefs } from 'pinia';
 // import { useAuthStore } from '~/store/auth';
 
@@ -51,16 +53,23 @@ const { authenticated } = storeToRefs(useAuthStore()); // make authenticated sta
 
 const user = ref({
   email: 'seaic.iot@gmail.com',
-  password: '00000',
+  password: '000000',
 });
 const router = useRouter();
 
 const login = async () => {
-  await authenticateUser(user.value);
-  // redirect to homepage if user is authenticated
-  if (authenticated) {
-    router.push('/control');
-  }
+  console.log('email:user.email', user.value.email)
+  try {
+      const generatedToken = await $jwtAuth.login(
+      {
+        email:user.value.email,
+        password: user.value.password
+      }
+      )
+
+    } catch (error) {
+      console.error(error);
+    }
 };
 
 const register = () => {

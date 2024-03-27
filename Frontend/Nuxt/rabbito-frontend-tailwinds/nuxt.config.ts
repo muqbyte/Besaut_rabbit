@@ -34,7 +34,8 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@pinia/nuxt',
     '@nuxt/image-edge',
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
+    'nuxt-jwt-auth'
   ],
   colorMode: {
     classSuffix: '',
@@ -57,6 +58,20 @@ export default defineNuxtConfig({
   pinia: {
     autoImports: ['defineStore', 'acceptHMRUpdate'],
   },
+  nuxtJwtAuth: {
+    baseUrl: 'https://tx.eagleattech.com/api/auth', // URL of your backend
+    endpoints: {
+      login: '/login', // Where to request login (POST)
+      logout: '/logout', // Where to request logout (POST)
+      user: '/user', // Where to request user data (GET)
+      signup: '/signup' // Where to request signup (POST)
+    },
+    redirects: {
+      home: '/', // Where to redirect after successfull login and logout
+      login: '/login', // Where to redirect if user is not logged in and accesses a logged-only route
+      logout: '/logout' // Where to redirect if user is logged in and accesses a guest-only route 
+    }
+  }
 })
 // import type { UserConfig } from 'vite'
 // import vuetify from 'vite-plugin-vuetify'

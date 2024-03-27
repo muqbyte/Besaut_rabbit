@@ -11,7 +11,7 @@
 </template>
 <script>
 definePageMeta({
-  middleware: ["auth", "is-admin"],
+  middleware: ["is-login", "is-admin"],
 });
 </script>
 

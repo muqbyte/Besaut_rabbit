@@ -25,6 +25,12 @@
               style="font-size: 24px; color: #0e7490"
             ></i
           ></nuxt-link>
+          <nuxt-link  v-if=" user && user.role  && user.role == 'super admin'" to="/admin" class="text-blue-500 hover:underline"
+            ><i
+              class="mdi mdi mdi-account"
+              style="font-size: 24px; color: #0e7490"
+            ></i
+          ></nuxt-link>
         </nav>
         <div
           class="ml-auto"
@@ -33,8 +39,10 @@
  
           <nav>
             <nuxt-link
-              v-if="authenticated"
-              @click="logout"
+              v-if="loggedIn"
+              @click="()=>{
+                logout()
+              }"
               class="text-blue-500 hover:underline logout"
               ><i
                 class="mdi mdi mdi-logout"
@@ -79,6 +87,12 @@
               style="font-size: 24px; color: #0e7490"
             ></i
           ></nuxt-link>
+          <nuxt-link  v-if=" user && user.role  && user.role == 'super admin'" to="/admin" class="text-blue-500 hover:underline"
+            ><i
+              class="mdi mdi mdi-account"
+              style="font-size: 24px; color: #0e7490"
+            ></i
+          ></nuxt-link>
         </nav>
         <div
           class="ml-auto"
@@ -87,8 +101,8 @@
         <Formatime />
           <nav>
             <nuxt-link
-              v-if="authenticated"
-              @click="logout"
+              v-if="loggedIn"
+              @click="()=>{logout()}"
               class="text-blue-500 hover:underline logout"
               ><i
                 class="mdi mdi mdi-logout"
@@ -127,6 +141,9 @@
 </template>
 
 <script setup lang="ts">
+const { user, loggedIn } = useJwtAuth()
+console.log(user, loggedIn)
+const { $jwtAuth } = useNuxtApp()
 import { useRoute } from "vue-router";
 import Formatime from "~/utils/formatime.vue";
 
@@ -158,9 +175,16 @@ const router = useRouter();
 const { logUserOut } = useAuthStore();
 const { authenticated } = storeToRefs(useAuthStore()); // make authenticated state reactive
 
-const logout = () => {
-  logUserOut();
-  router.push("/login");
+const  logout = async () => {
+  try {
+    // $jwtAuth.setUser(null)
+    // useCookie("nuxt-jwt-auth-token").value = null;
+  //  await $jwtAuth.clearAuthData()
+   await $jwtAuth.logout()
+  console.log('try to logout')
+  } catch (e) {
+    // your error handling
+  }
 };
 const login = () => {
   router.push("/login");

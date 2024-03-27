@@ -11,9 +11,10 @@ router.post('/login',
 passport.authenticate('web-local', { session: true}), //need to update from nuxt auth.
 async function(req, res) {
   console.log(req.user)
+  let a = req.user
   const token = jwt.sign(req.user.id, 'JWT_SECRET_OR_KEY2');
   // console.log('token',token)
-  return res.json({ token });
+  return res.json({ user:a, token });
 });
 
 router.get('/me',
@@ -49,5 +50,10 @@ passport.authenticate(['web-jwt',], { session: false }),
     })
   }
 );
+
+router.post('/logout', (req,res)=>{
+    return res.json({ logout:"logout" });
+  }
+)
 
 module.exports = router

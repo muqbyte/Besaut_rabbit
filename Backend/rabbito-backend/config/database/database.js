@@ -8,6 +8,13 @@ const connection = mysql.createPool ({
   password: "c1vG7R34",
   database: "rabbitto",
   port: 3306,
+
+
+  // host: "localhost",
+  // user: "root",
+  // password: "password",
+  // database: "rabbitto",
+  // port: 3306,
 });
 
 module.exports = connection;

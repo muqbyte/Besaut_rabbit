@@ -5,7 +5,13 @@ const cors = require('cors')
 const connection = require("./config/database/database.js");
 const passport = require( 'passport' );
 
-app.use(cors())
+app.use(cors(
+  {
+    origin: "https://tx.eagleattech.com",
+    // origin: "http://localhost:3000",
+    credentials: true 
+  }
+))
 
 //  Passport middleware
  app.use(passport.initialize());
@@ -31,6 +37,7 @@ app.get('/', (req, res) => {
 // API FOR USER/AUTH 
 app.use("/api/auth", require("./routes/user/auth"))
 app.use("/api/user", require("./routes/user/user"))
+app.use("/api/data", require("./routes/user/admin"))
 // Tuah Database
 app.use("/api/ranch", require("./routes/ranch"))
 app.use("/api/weather", require("./routes/weather"))

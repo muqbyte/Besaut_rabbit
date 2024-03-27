@@ -1,9 +1,10 @@
-import { storeToRefs } from 'pinia';
-import { useAuthStore } from '~/stores/auth';
 
 export default defineNuxtRouteMiddleware((to) => {
-  const {role } = storeToRefs(useAuthStore()); // make authenticated state reactive
-  if (role.value =='user') {
+
+  const { user, loggedIn } = useJwtAuth()
+  console.log(user)
+  if (user && user.value.role && user.value.role =='user') {
     return navigateTo('/user')
   }
+
 });
