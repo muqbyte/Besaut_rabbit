@@ -59,7 +59,8 @@ export default defineNuxtConfig({
     autoImports: ['defineStore', 'acceptHMRUpdate'],
   },
   nuxtJwtAuth: {
-    baseUrl: 'https://tx.eagleattech.com/api/auth', // URL of your backend
+    baseUrl: 'https://test.qwazx.one/api/auth', // URL of your backend
+    // baseUrl: 'https://tx.eagleattech.com/api/auth', // URL of your backend
     endpoints: {
       login: '/login', // Where to request login (POST)
       logout: '/logout', // Where to request logout (POST)
