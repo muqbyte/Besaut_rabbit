@@ -47,38 +47,38 @@ export const chartOption = (chartData) => ({
             name: 'TMP (min)',
             type: 'line',
             smooth: true,
-            data: chartData.map(item => Number(item.min_TMP.toFixed(2))),
+            data: chartData.map(item => item.min_TMP !== null ? Number(item.min_TMP.toFixed(2)) : null),
             },
           {
             name: 'TMP (avg)',
             type: 'line',
             smooth: true,
-            data: chartData.map(item => Number(item.avg_TMP.toFixed(2))),
+            data: chartData.map(item => item.avg_TMP !== null ? Number(item.avg_TMP.toFixed(2)) : null),
             },
           {
             name: 'TMP (max)',
             type: 'line',
             smooth: true,
-            data: chartData.map(item => Number(item.max_TMP.toFixed(2))),
+            data: chartData.map(item => item.max_TMP !== null ? Number(item.max_TMP.toFixed(2)) : null),
 
             },
           {
             name: 'RH (min)',
             type: 'line',
             smooth: true,
-            data: chartData.map(item => Number(item.min_RH.toFixed(2))),
+            data: chartData.map(item => item.min_RH !== null ? Number(item.min_RH.toFixed(2)) : null),
           },
           {
             name: 'RH (avg)',
             type: 'line',
             smooth: true,
-            data: chartData.map(item => Number(item.avg_RH.toFixed(2))),
+            data: chartData.map(item => item.avg_RH !== null ? Number(item.avg_RH.toFixed(2)) : null),
           },
           {
             name: 'RH (max)',
             type: 'line',
             smooth: true,           
-            data: chartData.map(item => Number(item.max_RH.toFixed(2))),
+            data: chartData.map(item => item.max_RH !== null ? Number(item.max_RH.toFixed(2)) : null),
           },
           {
             name: 'NH3 (min)',
@@ -87,7 +87,7 @@ export const chartOption = (chartData) => ({
             lineStyle: {
               color: '#c838fc', // Set the color for this series
             },
-            data: chartData.map(item => Number(item.min_NH3.toFixed(2))),
+            data: chartData.map(item => item.min_NH3 !== null ? Number(item.min_NH3.toFixed(2)) : null),
           },
           {
             name: 'NH3 (avg)',
@@ -96,7 +96,7 @@ export const chartOption = (chartData) => ({
             lineStyle: {
               color: '#be38fc', // Set the color for this series
             },       
-            data: chartData.map(item => Number(item.avg_NH3.toFixed(2))),            
+            data: chartData.map(item => item.avg_NH3 !== null ? Number(item.avg_NH3.toFixed(2)) : null),            
           },
           {
             name: 'NH3 (max)',
@@ -105,7 +105,7 @@ export const chartOption = (chartData) => ({
             lineStyle: {
               color: '#fc5de5', // Set the color for this series
             },
-            data: chartData.map(item => Number(item.max_NH3.toFixed(2))),
+            data: chartData.map(item => item.max_NH3 !== null ? Number(item.max_NH3.toFixed(2)) : null),
           },
 
         ]

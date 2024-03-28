@@ -1,7 +1,8 @@
 // stores/endpoints.ts
 import { defineStore } from 'pinia';
 
-const host = "https://tx.eagleattech.com/api/";
+const host = "http://localhost:7500/api/";
+// const host = "https://tx.eagleattech.com/api/";
 
 export const useEndpoints = defineStore('endpoints', {
   state: () => ({

@@ -23,7 +23,7 @@
         name="psw"
         required
       />
-      <div style="width: 100%; display:flex; justify-content:center; padding:10px 0">
+      <div class="link-container">
         <nav>
           <nuxt-link @click="register">
             <p class="subtitle-text opac">Do not have an account? <span style="color:#f59e0b"> Register here.</span> </p>
@@ -86,7 +86,12 @@ const register = () => {
   font-size: 26px;
   
 }
-
+.link-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
 .subtitle-text{
   color: deepskyblue 
 }

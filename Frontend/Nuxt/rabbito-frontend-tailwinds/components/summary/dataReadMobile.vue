@@ -98,14 +98,17 @@
         ]);
 
         const [responseDataThermal, responseDataNH3] = await Promise.all([
-            responseThermal.json(),
-            responseNH3.json()
-        ]);
+              responseThermal.json(),
+              responseNH3.json()
+          ]);
 
-        TMPData.value = responseDataThermal.TMP[0].VALUE;
-        RHData.value = responseDataThermal.RH[0].VALUE;
-        NH3Data.value = responseDataNH3.NH3[0].VALUE;
-        timestampData.value = responseDataThermal.RH[0].timestamp; // Use timestamp from RH endpoint
+          console.log('Response Data Thermal:', responseDataThermal);
+          console.log('Response Data NH3:', responseDataNH3);
+
+          TMPData.value = responseDataThermal.length > 0 ? responseDataThermal.find(item => item.TYPE === 'TMP').VALUE : null;
+          RHData.value = responseDataThermal.length > 0 ? responseDataThermal.find(item => item.TYPE === 'RH').VALUE : null;
+          NH3Data.value = responseDataNH3.NH3.length > 0 ? responseDataNH3.NH3[0].VALUE : null;
+          timestampData.value = responseDataThermal.length > 0 ? responseDataThermal[0].timestamp : null; // Use timestamp from the first element
 
         if (responseThermal.ok && responseNH3.ok) {
             apiResponse.value = { TMP: responseDataThermal, NH3: responseDataNH3 };
