@@ -7,7 +7,8 @@ const passport = require( 'passport' );
 
 app.use(cors(
   {
-    origin: "https://tx.eagleattech.com",
+    origin: "https://friot.eagleattech.com/",
+    // origin: "https://tx.eagleattech.com",
     // origin: "http://localhost:3000",
     credentials: true 
   }
